@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/30 14:50:32 by momihamm          #+#    #+#             */
-/*   Updated: 2023/12/31 12:16:27 by momihamm         ###   ########.fr       */
+/*   Created: 2023/12/31 11:39:31 by momihamm          #+#    #+#             */
+/*   Updated: 2023/12/31 11:41:13 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-# define PHONEBOOK_HPP
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 
 #include <iostream>
 #include <string>
-#include "Contact.hpp"
 
-class PhoneBook
+class Contact
 {
-	public :
-    Contact my_phonebook[8];
-	void add_new_cont(Contact cont);
+	std::string first_name;
+	std::string last_name;
+	std::string nickname;
+	std::string phone_number;
+	std::string darkest_secret;
 };
 
 #endif

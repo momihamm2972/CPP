@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 14:50:32 by momihamm          #+#    #+#             */
-/*   Updated: 2023/12/31 12:16:27 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/02 18:53:53 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class PhoneBook
 {
 	public :
     Contact my_phonebook[8];
-	void add_new_cont(Contact cont);
+	void add_new_cont(Contact cont[8]);
 };
 
 #endif

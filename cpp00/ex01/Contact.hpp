@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 11:39:31 by momihamm          #+#    #+#             */
-/*   Updated: 2023/12/31 11:41:13 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/02 19:00:45 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 class Contact
 {
+	public :
 	std::string first_name;
 	std::string last_name;
 	std::string nickname;

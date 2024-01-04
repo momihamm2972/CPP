@@ -6,15 +6,15 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 11:39:31 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/03 14:43:34 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/04 17:06:14 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 # define CONTACT_HPP
 
-#include <iostream>
-#include <string>
+// #include <iostream>
+// #include <string>
 
 class Contact
 {
@@ -27,7 +27,6 @@ class Contact
 	/*geters*/
 	std::string	getFirstName()
 	{
-		// std::cout << "@#_>" << first_name << std::endl;
 		return (first_name);
 	}
 	std::string	getLastName()
@@ -69,19 +68,6 @@ class Contact
 		darkest_secret = newDarkestSecret;
 	}
 	/********/
-		// std::string	getFirstName() const
-		// {
-		// 	return first_name;
-		// }
-		// std::string	getLastName() const;
-		// std::string	getFirstName() const;
-		// std::string	getFirstName() const;
-		// std::string	getFirstName() const;
-
-		// void	f( std::string name)
-		// {
-		// 	first_name = name;
-		// }
 };
 
 #endif

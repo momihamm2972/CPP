@@ -6,7 +6,7 @@
 #    By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/30 14:33:32 by momihamm          #+#    #+#              #
-#    Updated: 2023/12/30 18:50:51 by momihamm         ###   ########.fr        #
+#    Updated: 2024/01/05 16:25:32 by momihamm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ OBJ = $(FILES:.cpp=.o)
 
 all : $(NAME)
 
-%.o : %.c
+%.o : %.cpp
 	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME) : $(OBJ)

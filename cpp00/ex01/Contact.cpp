@@ -6,11 +6,11 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 11:39:28 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/04 22:00:01 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/05 20:16:31 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "phonebook.hpp"
+#include "PhoneBook.hpp"
 // #include "Contact.hpp"
 
 void	print_an_contact(Contact info[8], int indx)
@@ -94,4 +94,5 @@ void	clear_an_accont(Contact info[8], int indx)
     info[indx].setNickName(empty_str);
     info[indx].setPhoneNumber(empty_str);
     info[indx].setDaekestSecret(empty_str);
+    std::cout << "Warning : this contact has an empty field, please enter all information to save a new contact.By Odin, by Thor! Use your brain!!!" << std::endl;
 }

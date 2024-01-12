@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:16:37 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/06 11:41:17 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/12 14:52:54 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,16 @@
 
 class PhoneBook
 {
-	public :
     Contact my_phonebook[8];
+	public :
+	Contact	*retu_cont()
+	{
+		return (my_phonebook[8]);
+	}
+	void	set_cont(Contact my_phonebook[8])
+	{
+		
+	}
 	int	add_new_cont(Contact user[8], int indx);
 };
 

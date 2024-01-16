@@ -6,15 +6,15 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 11:39:28 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/15 21:08:28 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/16 19:39:10 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-    Contact::Contact() : first_name ("kmi")
+    Contact::Contact()
 	{
-        std::cout<< first_name;
+        // std::cout<< first_name;
 		first_name.empty ();
 		last_name.empty ();
 		nickname.empty ();
@@ -76,24 +76,22 @@
 	}
 	/********/
 
-void	print_an_contact(Contact info[8], int indx)
+void	print_an_contact(Contact info)
 {
-    indx--;
-    if (info[indx].getFirstName().empty())
+    if (info.getFirstName().empty())
     {
         std::cout << "Ther is non-contact whit this ID!!\n";
         return ;
     }
-    std::cout << "First Name : " << info[indx].getFirstName() << std::endl;
-    std::cout << "Last Name : " << info[indx].getLastName() << std::endl;
-    std::cout << "Nickname : " << info[indx].getNickname() << std::endl;
-    std::cout << "Phone Number : " << info[indx].getPhoneNumber() << std::endl;
-    std::cout << "Dark Secret : " << info[indx].getDarkSecret() << std::endl;
+    std::cout << "First Name : " << info.getFirstName() << std::endl;
+    std::cout << "Last Name : " << info.getLastName() << std::endl;
+    std::cout << "Nickname : " << info.getNickname() << std::endl;
+    std::cout << "Phone Number : " << info.getPhoneNumber() << std::endl;
+    std::cout << "Dark Secret : " << info.getDarkSecret() << std::endl;
 }
 
-void    print_table(Contact info[8])
+void    print_table(PhoneBook book)
 {
-    (void)info;
     int indx;
 
     indx = -1;
@@ -104,21 +102,22 @@ void    print_table(Contact info[8])
             std::cout << "|   indx   |First Name|Last Name | Nickname |" << std::endl;
         else
         {
-            if (info[indx].getFirstName().empty())
-                return ;
-            std::cout << "|     " << indx + 1 << "    |";
-            if (info[indx].getFirstName().length() > 10)
-                std::cout << info[indx].getFirstName().substr(0, 9) << ".|";
-            else
-                std::cout << std::setw(10) << info[indx].getFirstName();
-            if (info[indx].getLastName().length() > 10)
-                std::cout << info[indx].getLastName().substr(0, 9) << ".|";
-            else
-                std::cout << "|" << std::setw(10) << info[indx].getLastName();
-            if (info[indx].getNickname().length() > 10)
-                std::cout << info[indx].getNickname().substr(0, 9) << ".|" << std::endl;
-            else
-                std::cout << "|" << std::setw(10) << info[indx].getNickname() << "|" << std::endl;
+            print_an_contact (book.get_my_phonebook(indx));
+            // if (book.getFirstName().empty())
+            //     return ;
+            // std::cout << "|     " << indx + 1 << "    |";
+            // if (book.getFirstName().length() > 10)
+            //     std::cout << book.getFirstName().substr(0, 9) << ".|";
+            // else
+            //     std::cout << std::setw(10) << book.getFirstName();
+            // if (book.getLastName().length() > 10)
+            //     std::cout << book.getLastName().substr(0, 9) << ".|";
+            // else
+            //     std::cout << "|" << std::setw(10) << book.getLastName();
+            // if (book.getNickname().length() > 10)
+            //     std::cout << book.getNickname().substr(0, 9) << ".|" << std::endl;
+            // else
+            //     std::cout << "|" << std::setw(10) << book.getNickname() << "|" << std::endl;
         }
         indx++;
     }
@@ -142,14 +141,14 @@ void	print_all_contact(Contact info[8])
     }
 }
 
-void	clear_an_accont(Contact info[8], int indx)
+void	clear_an_accont(Contact *info)
 {
 	std::string empty_str;
 	empty_str.clear();
-    info[indx].setFirstName(empty_str);
-    info[indx].setLastName(empty_str);
-    info[indx].setNickName(empty_str);
-    info[indx].setPhoneNumber(empty_str);
-    info[indx].setDaekestSecret(empty_str);
+    info->setFirstName(empty_str);
+    info->setLastName(empty_str);
+    info->setNickName(empty_str);
+    info->setPhoneNumber(empty_str);
+    info->setDaekestSecret(empty_str);
     std::cout << "Warning : this contact has an empty field, please enter all information to save a new contact." << std::endl;
 }

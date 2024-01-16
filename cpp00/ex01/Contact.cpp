@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 11:39:28 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/16 19:39:10 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/16 23:02:14 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,16 @@ void	print_an_contact(Contact info)
     std::cout << "Dark Secret : " << info.getDarkSecret() << std::endl;
 }
 
-void    print_table(PhoneBook book)
+int	print_table(PhoneBook book)
 {
     int indx;
 
     indx = -1;
+    if (book.get_my_phonebook(0).getFirstName().empty())
+	{
+        std::cout << "NO SAVED CONTACT YET!!" << std::endl;
+		return (-1);
+	}
     while (indx < 8)
     {
         std::cout << "---------------------------------------------" << std::endl;
@@ -102,7 +107,11 @@ void    print_table(PhoneBook book)
             std::cout << "|   indx   |First Name|Last Name | Nickname |" << std::endl;
         else
         {
-            print_an_contact (book.get_my_phonebook(indx));
+			if (book.get_my_phonebook(indx).getFirstName().empty())
+				break ;
+            std::cout << "|    " << indx + 1 << "     |";
+            // print_an_contact (book.get_my_phonebook(indx));
+            print_contact_in_table (book.get_my_phonebook(indx));
             // if (book.getFirstName().empty())
             //     return ;
             // std::cout << "|     " << indx + 1 << "    |";
@@ -121,7 +130,8 @@ void    print_table(PhoneBook book)
         }
         indx++;
     }
-    std::cout << "---------------------------------------------" << std::endl;
+    // std::cout << "---------------------------------------------" << std::endl;
+	return (0);
 }
 
 void	print_all_contact(Contact info[8])

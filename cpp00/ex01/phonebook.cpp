@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:16:25 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/16 19:46:46 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/16 23:00:02 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,14 +168,38 @@ void    PhoneBook::printPhonebook()
     }
 }
 
+void    print_contact_in_table(Contact peer)
+{
+    (void) peer;
+    // std::cout <<  peer.getFirstName() << "|";
+    // std::cout <<  peer.getLastName() << "|";
+    // std::cout <<  peer.getNickname() << "|" << std::endl;
+    // std::cout << "*" << peer.getFirstName() << "*";
+    // std::cout << "*" <<std::setw(10) << peer.getFirstName() << "*";
+	if (peer.getFirstName().length() <= 10)
+		std::cout << std::setw(10) << peer.getFirstName() << "|";
+	else
+		std::cout << peer.getFirstName().substr(0, 9) << ".|";
+	if (peer.getLastName().length() <= 10)
+		std::cout << std::setw(10) << peer.getLastName() << "|";
+	else
+		std::cout << peer.getLastName().substr(0, 9) << ".|";
+	if (peer.getNickname().length() <= 10)
+		std::cout << std::setw(10) << peer.getNickname() << "|" << std::endl;
+	else
+		std::cout << peer.getNickname().substr(0, 9) << ".|" << std::endl;
+}
+
 void    PhoneBook::search(PhoneBook bookphone)
 {
     int         indx;
     std::string in_put;
     
     indx = 0;
-    print_table (bookphone);
+    if (print_table (bookphone) == -1)
+		return ;
     // std::getline (std::cin, in_put);
+	std::cout << "searching$>";
     if (std::getline (std::cin, in_put).eof())
         return ;
     while (in_put[indx])
@@ -188,8 +212,13 @@ void    PhoneBook::search(PhoneBook bookphone)
         indx++;
     }
     indx = std::atoi(in_put.c_str());
-    print_an_contact(bookphone.get_my_phonebook(indx-1));
-    std::cout << indx <<std::endl;
+	// std::cout << "ana hna\n";
+	if (indx <= 9)
+    	print_an_contact(bookphone.get_my_phonebook(indx-1));
+	else
+		std::cout << "NON-CONTACT ID!"<< std::endl;
+	// std::cout << "ana *hna\n";
+    // std::cout << indx <<std::endl;
     
 }
 

@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 11:39:28 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/16 23:02:14 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/17 09:48:51 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
     Contact::Contact()
 	{
-        // std::cout<< first_name;
 		first_name.empty ();
 		last_name.empty ();
 		nickname.empty ();
@@ -110,27 +109,10 @@ int	print_table(PhoneBook book)
 			if (book.get_my_phonebook(indx).getFirstName().empty())
 				break ;
             std::cout << "|    " << indx + 1 << "     |";
-            // print_an_contact (book.get_my_phonebook(indx));
             print_contact_in_table (book.get_my_phonebook(indx));
-            // if (book.getFirstName().empty())
-            //     return ;
-            // std::cout << "|     " << indx + 1 << "    |";
-            // if (book.getFirstName().length() > 10)
-            //     std::cout << book.getFirstName().substr(0, 9) << ".|";
-            // else
-            //     std::cout << std::setw(10) << book.getFirstName();
-            // if (book.getLastName().length() > 10)
-            //     std::cout << book.getLastName().substr(0, 9) << ".|";
-            // else
-            //     std::cout << "|" << std::setw(10) << book.getLastName();
-            // if (book.getNickname().length() > 10)
-            //     std::cout << book.getNickname().substr(0, 9) << ".|" << std::endl;
-            // else
-            //     std::cout << "|" << std::setw(10) << book.getNickname() << "|" << std::endl;
         }
         indx++;
     }
-    // std::cout << "---------------------------------------------" << std::endl;
 	return (0);
 }
 

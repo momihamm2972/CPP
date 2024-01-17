@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:16:37 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/16 22:59:17 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/17 09:52:52 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class PhoneBook
 	public :
 	/*Constructor*/
 	PhoneBook();
-	~PhoneBook(){};
+	~PhoneBook();
 	/*************/
 	/*geters*/
 	Contact	get_my_phonebook(int indx);
@@ -39,11 +39,9 @@ void	print_an_contact(Contact info);
 void    search(PhoneBook bookphone);
 };
 
-// void	print_all_contact(Contact *info);
 void	clear_an_accont(Contact *info);
 void	print_an_contact(Contact info);
 void    print_contact_in_table(Contact peer);
 int		print_table(PhoneBook book);
-// int		ft_atoi_pp(std::string str);
 
 #endif

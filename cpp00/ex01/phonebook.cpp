@@ -6,20 +6,12 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:16:25 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/17 09:52:38 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/17 12:23:35 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
-    PhoneBook::PhoneBook()
-    {
-        
-    }
-    PhoneBook::~PhoneBook()
-    {
-        
-    }
     /*geter*/
     Contact PhoneBook::get_my_phonebook(int indx)
     {

@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 11:39:28 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/17 09:48:51 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/17 12:37:56 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,8 @@ int	print_table(PhoneBook book)
             print_contact_in_table (book.get_my_phonebook(indx));
         }
         indx++;
+		if (indx == 8)
+        	std::cout << "---------------------------------------------" << std::endl;
     }
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:16:37 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/17 09:52:52 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/17 12:09:57 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,16 @@ class PhoneBook
 	private :
     	Contact	my_phonebook[8];
 	public :
-	/*Constructor*/
-	PhoneBook();
-	~PhoneBook();
-	/*************/
 	/*geters*/
 	Contact	get_my_phonebook(int indx);
 	/********/
 	/*seters*/
 	void	set_obj(Contact peer, int indx);
 	/********/
-	int	add_new_cont(Contact *user, int indx);
 	void	printPhonebook();
-void	print_an_contact(Contact info);
-void    search(PhoneBook bookphone);
+	void	print_an_contact(Contact info);
+	void    search(PhoneBook bookphone);
+	int		add_new_cont(Contact *user, int indx);
 };
 
 void	clear_an_accont(Contact *info);

@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:16:25 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/17 12:23:35 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/18 22:45:47 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,71 +25,248 @@
     }
     /********/
 
-int ft_atoi_pp(std::string str)
-{
-    int indx;
-    int result;
-    int sing;
+// void	checker(std::string input)
+// {
+	
+// }
+
+// int ft_atoi_pp(std::string str)
+// {
+//     int indx;
+//     int result;
+//     int sing;
     
-    indx = 0;
-    result= 0;
-    sing = 1;
-    while(str[indx])
-    {
-        if (str[indx] == '+' || str[indx] == '-')
+//     indx = 0;
+//     result= 0;
+//     sing = 1;
+//     while(str[indx])
+//     {
+//         if (str[indx] == '+' || str[indx] == '-')
+//         {
+//             if (str[indx] == '-')
+//             {
+//                 sing *= -1;
+//                 indx++;
+//             }
+//         }
+//         if (!(str[indx] >= '0' && str[indx] <= '9'))
+//             return (-1);
+//         result = (result * 10) + str[indx] - '0';
+//         indx++;
+//     }
+//     return (result * sing);
+// }
+int	front_space(std::string input)
+{
+	int indx;
+
+	indx = 0;
+	while (input[indx] && input[indx] == ' ')
+		indx++;
+	return (indx);
+}
+int	check_complex(std::string input)
+{
+	int	indx;
+
+	indx = 0;
+	while (input[indx])
+	{
+		if (input[indx] == ' ')
+		{
+			// if (input[indx] && input[indx + 1] == '\0')
+			// 	return (1);
+			if (input[indx] && input[indx + 1] == ' ')
+				return (-1);
+		}
+		indx++;
+	}
+	return (0);
+}
+
+int	rev_len(std::string str)
+{
+	int len;
+
+	len = str.length() - 1;
+	while (str[len])
+	{
+		if (str[len] == ' ')
+			len--;
+		else
+			break;
+	}
+	return (len);
+}
+
+int	check_input(std::string input)
+{
+	int	indx;
+	// int	len;
+	// int	cont;
+
+	if (check_complex (input) == -1)
+	{
+		return (-1);
+		// if (check_complex (input) == -1)
+		// if (check_complex (input) == 1)
+		// {
+		// 	len = input.length();
+		// 	input.erase(len - 1, 1);
+		// 	std::cout << "~~" << input << "~~" << std::endl;
+		// }
+	}
+	indx = 0;
+	// cont = 0;
+	while (input[indx])
+	{
+		if (input[indx] == '\t')
+			return (-1);
+		// if (input[indx] == ' ')
+		// {
+		// 	cont++;
+		// 	if (cont > 1)
+		// 		return (-1);
+		// }
+		indx++;
+	}
+	return (0);
+}
+
+std::string	is_accept(std::string in_put)
+{
+	if (check_input(in_put) != 0)
+    {	
+        std::cout << "WARNING : we can't add this one!!\n";
+        while (1)
         {
-            if (str[indx] == '-')
-            {
-                sing *= -1;
-                indx++;
-            }
+            std::cout << "First name :";
+            if (std::getline(std::cin, in_put).eof())
+                exit(1);
+            if (check_input(in_put) == 0)
+                break;
+            std::cout << "WARNING : we can't add this one!!\n";
         }
-        if (!(str[indx] >= '0' && str[indx] <= '9'))
-            return (-1);
-        result = (result * 10) + str[indx] - '0';
-        indx++;
     }
-    return (result * sing);
+	return (in_put);
+}
+
+void	checker(std::string &input)
+{
+    int len;
+
+    std::cout << input << "=>>"<< std::endl;
+    if 	(front_space (input) > 0)
+	{
+		input.erase(0,front_space(input));
+		std::cout << "!!" << input << "!!" << std::endl;
+	}
+    std::cout << input << "<<****>>"<< std::endl;
+    if (rev_len(input) > 0)
+	{
+		len = rev_len (input) + 1;
+		std::cout << len << std::endl;
+		input.erase(len, input.length() - len);
+		std::cout << "!*!" << input << "!*!" << std::endl;
+	}
+    if (check_input(input) != 0)
+    {	
+        std::cout << "WARNING :zz we can't add this one!!\n";
+        while (1)
+        {
+            std::cout << "First name :";
+            if (std::getline(std::cin, input).eof())
+                exit(1);
+            checker (input);
+            if (check_input(input) == 0)
+                break;
+            std::cout << "WARNING : we can't add this one!!\n";
+        }
+    }
 }
 
 int PhoneBook::add_new_cont(Contact *user, int indx)
 {
     std::string input;
     int         add;
-    
+	// int			len;
+	
+	(void)user;
+	(void)indx;		
     add = 0;
     std::cout << "To add a new contact please enter the follwing information :"<< std::endl;
     std::cout << "First name :";
     if (std::getline(std::cin, input).eof())
         exit(1);
+    checker (input);
+    
+	std::cout << input << "****"<< std::endl;
+	// std::cout << check_input(input) << "#&#" << std::endl;
+	// if 	(front_space (input) > 0)
+	// {
+	// 	input.erase(0,front_space(input));
+	// 	std::cout << "!!" << input << "!!" << std::endl;
+	// }
+	// if (rev_len(input) > 0)
+	// {
+	// 	len = rev_len (input) + 1;
+	// 	std::cout << len << std::endl;
+	// 	input.erase(len, input.length() - len);
+	// 	std::cout << "!*!" << input << "!*!" << std::endl;
+	// }
+    // if (check_input(input) != 0)
+    // {	
+    //     std::cout << "WARNING :zz we can't add this one!!\n";
+    //     while (1)
+    //     {
+    //         std::cout << "First name :";
+    //         if (std::getline(std::cin, input).eof())
+    //             exit(1);
+    //         if (check_input(input) == 0)
+    //             break;
+    //         std::cout << "WARNING : we can't add this one!!\n";
+    //     }
+    // }	
+	// if (check_complex (input) == 1)
+	// {
+	// 	len = input.length();
+	// 		input.erase(len - 1, 1);
+	// 		std::cout << "~~" << input << "~~" << std::endl;
+	// }	
     if (input.empty())
 		add++;
-    user->setFirstName(input);
-	user->getFirstName();
+    user->setFirstName(is_accept(input));
+	std::cout << ">" <<user->getFirstName() << "<" << std::endl;
+	// ?######################################################################################################################################################################################################################################################################
+	// user->getFirstName();	
     std::cout << "Last name :";
     if (std::getline(std::cin, input).eof())
         exit(1);
+    checker (input);
 	if (input.empty())
 		add++;
-    user->setLastName(input);
+    user->setLastName(is_accept(input));
     std::cout << "Nickname :";
     if (std::getline(std::cin, input).eof())
         exit(1);
+    checker (input);
 	if (input.empty())
 		add++;
-    user->setNickName(input);
+    user->setNickName(is_accept(input));
     std::cout << "Phone number :";
     if (std::getline(std::cin, input).eof())
         exit(1);
+    checker (input);
 	if (input.empty())
 		add++;
-    user->setPhoneNumber(input);
+    user->setPhoneNumber(is_accept(input));
     std::cout << "Darkest secret :";
     if (std::getline(std::cin, input).eof())
         exit(1);
+    checker (input);
 	if (input.empty())
 		add++;
-    user->setDaekestSecret(input);
+    user->setDaekestSecret(is_accept(input));
     std::cout << "Thanks for your time!!" << std::endl;
 	if (add > 0)
 	{
@@ -171,6 +348,8 @@ void    PhoneBook::search(PhoneBook bookphone)
     
 }
 
+
+
 int main(void)
 {
     PhoneBook	emty;
@@ -187,6 +366,7 @@ int main(void)
     {
         if (!std::getline (std::cin, in_put))
             break ;
+        // std::cout << in_put << "**" << std::endl;
         if (in_put == "EXIT")
             return (0);
         else if (in_put == "ADD")
@@ -204,5 +384,5 @@ int main(void)
         else
             std::cout << "awesomephonebook: command not found!!\n";
         std::cout<< "awesomephonebook$>";
-    }
+    }	
 }

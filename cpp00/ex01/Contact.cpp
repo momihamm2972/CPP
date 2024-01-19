@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 11:39:28 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/17 12:37:56 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/19 14:48:57 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
     Contact::Contact()
 	{
-		first_name.empty ();
-		last_name.empty ();
-		nickname.empty ();
-		phone_number.empty ();
-		darkest_secret.empty ();
+		first_name.clear ();
+		last_name.clear ();
+		nickname.clear ();
+		phone_number.clear ();
+		darkest_secret.clear ();
 	}
 
     Contact::~Contact()

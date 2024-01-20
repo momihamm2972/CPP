@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:16:37 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/17 12:09:57 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/20 18:17:25 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ class PhoneBook
 void	clear_an_accont(Contact *info);
 void	print_an_contact(Contact info);
 void    print_contact_in_table(Contact peer);
+void	checker(std::string &input, int num);
 int		print_table(PhoneBook book);
-
+	
 #endif

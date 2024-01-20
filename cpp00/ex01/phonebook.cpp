@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
+/*   phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 17:16:25 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/19 12:44:35 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/20 18:29:01 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "phonebook.hpp"
 
     /*geter*/
     Contact PhoneBook::get_my_phonebook(int indx)
@@ -21,7 +21,7 @@
     /*seters*/
     void PhoneBook::set_obj(Contact peer, int indx)
     {
-           my_phonebook[indx] = peer;
+        my_phonebook[indx] = peer;
     }
     /********/
 
@@ -81,7 +81,7 @@ int	check_input(std::string input)
 	}
 	return (0);
 }
-
+	
 std::string	is_accept(std::string in_put)
 {
 	if (check_input(in_put) != 0)
@@ -100,7 +100,7 @@ std::string	is_accept(std::string in_put)
 	return (in_put);
 }
 
-void	checker(std::string &input)
+void    checker(std::string &input, int num)
 {
     int len;
 
@@ -118,10 +118,19 @@ void	checker(std::string &input)
         std::cout << "WARNING :zz we can't add this one!!\n";
         while (1)
         {
-            std::cout << "First name :";
+            if (num == 0)
+                std::cout << "First name :";
+            else if (num == 1)
+                std::cout << "Last name :";
+            else if (num == 2)
+                std::cout << "Nickname :";
+            else if (num == 3)
+                std::cout << "Phone number :";
+            else if (num == 4)
+                std::cout << "Darkest secret :";
             if (std::getline(std::cin, input).eof())
                 exit(1);
-            checker (input);
+            checker (input, num);
             if (check_input(input) == 0)
                 break;
             std::cout << "WARNING : we can't add this one!!\n";
@@ -133,43 +142,41 @@ int PhoneBook::add_new_cont(Contact *user, int indx)
 {
     std::string input;
     int         add;
-	
-	(void)user;
-	(void)indx;		
+
     add = 0;
     std::cout << "To add a new contact please enter the follwing information :"<< std::endl;
     std::cout << "First name :";
     if (std::getline(std::cin, input).eof())
         exit(1);
-    checker (input);
+    checker (input, 0);
     if (input.empty())
 		add++;
     user->setFirstName(is_accept(input));	
     std::cout << "Last name :";
     if (std::getline(std::cin, input).eof())
         exit(1);
-    checker (input);
+    checker (input, 1);
 	if (input.empty())
 		add++;
     user->setLastName(is_accept(input));
     std::cout << "Nickname :";
     if (std::getline(std::cin, input).eof())
         exit(1);
-    checker (input);
+    checker (input, 2);
 	if (input.empty())
 		add++;
     user->setNickName(is_accept(input));
     std::cout << "Phone number :";
     if (std::getline(std::cin, input).eof())
         exit(1);
-    checker (input);
+    checker (input, 3);
 	if (input.empty())
 		add++;
     user->setPhoneNumber(is_accept(input));
     std::cout << "Darkest secret :";
     if (std::getline(std::cin, input).eof())
         exit(1);
-    checker (input);
+    checker (input, 4);
 	if (input.empty())
 		add++;
     user->setDaekestSecret(is_accept(input));
@@ -186,6 +193,7 @@ int PhoneBook::add_new_cont(Contact *user, int indx)
 
 void	PhoneBook::print_an_contact(Contact info)
 {
+	
     if (info.getFirstName().empty())
     {
         std::cout << "Ther is non-contact whit this ID!!\n";
@@ -234,12 +242,12 @@ void    PhoneBook::search(PhoneBook bookphone)
     indx = 0;
     if (print_table (bookphone) == -1)
 		return ;
-	std::cout << "searching$>";
+	std::cout << "for searching please entre a digit$>";
     if (std::getline (std::cin, in_put).eof())
         return ;
     while (in_put[indx])
     {
-        if (!isdigit(in_put[indx]))
+        if (!isdigit(in_put[indx]) || in_put.empty ())
         {
             std::cout << "ID NOT VALID!"<< std::endl;
             return ;
@@ -247,7 +255,7 @@ void    PhoneBook::search(PhoneBook bookphone)
         indx++;
     }
     indx = std::atoi(in_put.c_str());
-	if (indx <= 9)
+	if (indx > 0 && indx <= 9)
     	print_an_contact(bookphone.get_my_phonebook(indx-1));
 	else
 		std::cout << "NON-CONTACT ID!"<< std::endl;

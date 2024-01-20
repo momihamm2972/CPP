@@ -6,11 +6,11 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 11:39:28 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/19 14:48:57 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/20 17:19:38 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "PhoneBook.hpp"
+#include "phonebook.hpp"
 
     Contact::Contact()
 	{
@@ -29,7 +29,7 @@
 		phone_number.clear ();
 		darkest_secret.clear ();
 	}
-
+	
 	/*geters*/
 	std::string	Contact::getFirstName()
 	{

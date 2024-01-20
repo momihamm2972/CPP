@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 12:56:41 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/19 17:20:18 by momihamm         ###   ########.fr       */
+/*   Created: 2024/01/19 18:00:58 by momihamm          #+#    #+#             */
+/*   Updated: 2024/01/19 22:13:14 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanB.hpp"
 
-int main()
+HumanB::HumanB(std::string newname)
 {
-    Zombie *test;
+	this->name = newname;
+	this->gun = NULL;
+}
 
-    test = zombieHorde(5, "mol_kotchi");
-    delete  [] test;
+HumanB::~HumanB()
+{
+	
+}
+
+void    HumanB::setWeapon(Weapon& newGun)
+{
+	this->gun = &newGun;
+}
+
+void    HumanB::attack()
+{
+	if (this->gun)
+		std::cout << this->name << " attacks with their " << this->gun->getType() << std::endl;
 }

@@ -5,18 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/05 10:24:33 by momihamm          #+#    #+#              #
-#    Updated: 2024/01/19 16:42:53 by momihamm         ###   ########.fr        #
+#    Created: 2024/01/19 22:39:41 by momihamm          #+#    #+#              #
+#    Updated: 2024/01/19 22:41:55 by momihamm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = BraiiiiiiinnnzzzZ
+NAME = Sedisforlosers
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-FILES = main.cpp        \
-		newZombie.cpp   \
-		randomChump.cpp \
-		Zombie.cpp
+FILES = main.cpp  \
+		mySed.cpp \
+		utils.cpp \
 
 OBJ = $(FILES:.cpp=.o)
 
@@ -25,7 +24,7 @@ all : $(NAME)
 %.o : %.cpp
 	$(CC) $(FLAGS) -c $< -o $@
 
-$(NAME) : $(OBJ) Zombie.hpp
+$(NAME) : $(OBJ) mySed.hpp
 	$(CC) $(FILES) $(FLAGS) -o $(NAME)
 
 clean :

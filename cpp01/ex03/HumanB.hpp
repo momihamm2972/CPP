@@ -1,21 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 12:56:41 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/19 17:20:18 by momihamm         ###   ########.fr       */
+/*   Created: 2024/01/19 18:01:00 by momihamm          #+#    #+#             */
+/*   Updated: 2024/01/19 22:11:46 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HUMANB_HPP
+# define HUMANB_HPP
 
-int main()
+#include "Weapon.hpp"
+
+class HumanB
 {
-    Zombie *test;
+private:
+    std::string name;
+    Weapon*  gun;
+public:
+    HumanB(std::string);
+    ~HumanB();
+    void    setWeapon(Weapon& newGun);
+    void    attack();
+};
 
-    test = zombieHorde(5, "mol_kotchi");
-    delete  [] test;
-}
+#endif

@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 12:56:41 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/19 17:20:18 by momihamm         ###   ########.fr       */
+/*   Created: 2024/01/19 18:01:08 by momihamm          #+#    #+#             */
+/*   Updated: 2024/01/19 20:54:00 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
-int main()
+#include <iostream>
+#include <iomanip>
+#include <string>
+
+class Weapon
 {
-    Zombie *test;
+	private :
+		std::string type;
+	public :
+		Weapon( std::string newtype );
+		~Weapon();
+		std::string	getType();
+		void		setType(std::string newType);
+};
 
-    test = zombieHorde(5, "mol_kotchi");
-    delete  [] test;
-}
+#endif

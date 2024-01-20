@@ -5,17 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 12:56:41 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/19 17:20:18 by momihamm         ###   ########.fr       */
+/*   Created: 2024/01/19 18:01:03 by momihamm          #+#    #+#             */
+/*   Updated: 2024/01/19 22:16:45 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
 
 int main()
 {
-    Zombie *test;
-
-    test = zombieHorde(5, "mol_kotchi");
-    delete  [] test;
+    {
+        Weapon club = Weapon("crude spiked club");
+        HumanA bob("Bob", club);
+        bob.attack();
+        club.setType("some other type of club");
+        bob.attack();
+    }
+    {
+        Weapon club = Weapon("crude spiked club");
+        HumanB jim("Jim");
+        jim.setWeapon(club);
+        jim.attack();
+        club.setType("some other type of club");
+        jim.attack();
+    }
+    return (0);
 }

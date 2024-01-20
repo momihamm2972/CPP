@@ -5,17 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 12:56:41 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/19 17:20:18 by momihamm         ###   ########.fr       */
+/*   Created: 2024/01/19 17:21:56 by momihamm          #+#    #+#             */
+/*   Updated: 2024/01/19 17:56:22 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include <iostream>
+#include <iomanip>
+#include <string>
 
 int main()
 {
-    Zombie *test;
+	std::string	str = "HI THIS IS BRAIN";
+	std::string* stringPTR = &str;
+	std::string& stringREF = str;
 
-    test = zombieHorde(5, "mol_kotchi");
-    delete  [] test;
+	std::cout << &str << std::endl;
+	std::cout << stringPTR << std::endl;
+	std::cout << &stringREF << std::endl;
+
+	std::cout << str << std::endl;
+    std::cout << stringPTR << std::endl;
+    std::cout << stringREF << std::endl;
 }

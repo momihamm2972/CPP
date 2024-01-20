@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 12:56:41 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/19 17:20:18 by momihamm         ###   ########.fr       */
+/*   Created: 2024/01/19 18:00:52 by momihamm          #+#    #+#             */
+/*   Updated: 2024/01/19 21:30:24 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanA.hpp"
 
-int main()
+HumanA::HumanA(std::string newname, Weapon& new_weapon) : gun( new_weapon )
 {
-    Zombie *test;
+    this->name = newname;
+}
 
-    test = zombieHorde(5, "mol_kotchi");
-    delete  [] test;
+HumanA::~HumanA()
+{
+    
+}
+
+void    HumanA::attack()
+{
+    std::cout << this->name << " attacks with their " << this->gun.getType() << std::endl;
 }

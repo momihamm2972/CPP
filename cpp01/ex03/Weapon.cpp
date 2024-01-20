@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 12:56:41 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/19 17:20:18 by momihamm         ###   ########.fr       */
+/*   Created: 2024/01/19 18:01:05 by momihamm          #+#    #+#             */
+/*   Updated: 2024/01/19 20:58:22 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
 
-int main()
+Weapon::Weapon(std::string newtype)
 {
-    Zombie *test;
+    this->type = newtype;
+}
+Weapon::~Weapon()
+{
+    
+}
 
-    test = zombieHorde(5, "mol_kotchi");
-    delete  [] test;
+std::string Weapon::getType()
+{
+    return (this->type);
+}
+
+void	Weapon::setType(std::string newType)
+{
+	this->type = newType;
 }

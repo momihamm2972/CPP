@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 22:39:38 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/20 02:43:34 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/21 01:59:49 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,16 @@ int main(int ac, char **av)
 			return (0);
 		}
 		outfile.open(check_name(s3));
-		// std::cout << "kmi  " << check_name(s3) << std::endl;
 		while (i)
 		{
-			// std::cout << "wach hna\n";
 			if ((std::getline(infile, input)).eof())
 			{
 				checkIfTher(outfile, input, s1, s2, 1);
 				break;
 			}
 			checkIfTher(outfile, input, s1, s2, 0);
-			// std::cout << input << std::endl;
 		}
 	}
 	else
-		std::cout << "We can't support you argument" << std::endl;
+		std::cout << "We can't support your argument" << std::endl;
 }

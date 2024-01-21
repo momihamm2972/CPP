@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 22:39:44 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/20 03:26:40 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/21 01:57:11 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,35 +27,30 @@ std::string	check_name(std::string name)
 	return (name.erase(my_len(name), name.length()) + ".replace");
 }
 
+
 int	checkIfTher(std::ofstream& outfile, std::string input, std::string acc, std::string rep, int line)
 {
 	int	found = 0;
-(void)rep;
+
 	while (1)
 	{
 		found = input.find(acc);
 		if ((unsigned long)found == std::string::npos)
 		{
-			// std::cout << "dkhel  " << input << std::endl;
-			if (line == 0)
+			if (line == 0 && ((unsigned long)found == std::string::npos))
 				outfile << input << std::endl;
-			else
+			else if (line != 0 && ((unsigned long)found == std::string::npos))
 				outfile << input;
-			// return (-1);
 			break; 
 		}
 		else
 		{
-			std::cout << "Befor " << input << std::endl;
 			input.erase (found, acc.length());
-			std::cout << "erase " << input << std::endl;
 			input.insert(found, rep);
-			std::cout << "insert " << input << std::endl;
-			if (line == 0)
+			if (line == 0 && ((unsigned long)found == std::string::npos))
 				outfile << input << std::endl;
-			else
+			else if (line != 0 && ((unsigned long)found == std::string::npos))
 				outfile << input;
-			// std::cout << "After" << input << std::endl;
 		}
 	}
 	return (0);

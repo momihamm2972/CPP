@@ -6,7 +6,15 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 02:03:59 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/21 02:04:00 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/22 03:02:06 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Harl.hpp"
+
+int main()
+{
+    Harl	blanka;
+
+	blanka.complain("ERROR");
+}

@@ -1,35 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Harl.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 02:03:56 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/22 02:58:35 by momihamm         ###   ########.fr       */
+/*   Created: 2024/01/22 03:04:52 by momihamm          #+#    #+#             */
+/*   Updated: 2024/01/22 03:04:53 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_HPP
-# define HARL_HPP
-
-#include <iostream>
-#include <fstream>
-#include <iomanip>
-#include <string>
-
-class Harl
-{
-	private :
-		void	debug( void );
-		void	info( void );
-		void	warning( void );
-		void	error( void );
-		void	(Harl::*ptr[4])();
-	public :
-		Harl();
-		// Harl();
-		void	complain( std::string level );
-};
-
-#endif

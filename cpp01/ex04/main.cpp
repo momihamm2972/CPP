@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 22:39:38 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/21 01:59:49 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/22 00:50:46 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int main(int ac, char **av)
 {
-	int i = 1;
     std::string input;
 
 	if (ac == 4)
@@ -37,14 +36,30 @@ int main(int ac, char **av)
 			return (0);
 		}
 		outfile.open(check_name(s3));
-		while (i)
+		if (s1 == s2)
 		{
-			if ((std::getline(infile, input)).eof())
+			while (1)
 			{
-				checkIfTher(outfile, input, s1, s2, 1);
-				break;
+				if (!(std::getline(infile, input)).eof())
+					outfile << input << std::endl;
+				else
+				{
+					outfile << input;
+					break;
+				}
 			}
-			checkIfTher(outfile, input, s1, s2, 0);
+		}
+		else
+		{
+			while (1)
+			{puts("here1");
+				if ((std::getline(infile, input)).eof())
+				{
+					checkIfTher(outfile, input, s1, s2, 1);
+					break;
+				}
+				checkIfTher(outfile, input, s1, s2, 0);
+			}
 		}
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 03:04:39 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/24 05:31:22 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/24 06:31:00 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,89 @@ std::ostream& operator<<(std::ostream& os, const Fixed& obj)
 {
 	os << obj.toFloat();
 	return (os);
+}
+
+bool Fixed::operator<(const Fixed& obj) const
+{
+	return (this->fixedPoint < obj.fixedPoint);
+}
+
+bool Fixed::operator>(const Fixed& obj) const
+{
+	return (this->fixedPoint > obj.fixedPoint);
+}
+
+bool Fixed::operator>=(const Fixed& obj) const
+{
+	return (this->fixedPoint >= obj.fixedPoint);
+}
+
+bool Fixed::operator<=(const Fixed& obj) const
+{
+	return (this->fixedPoint <= obj.fixedPoint);
+}
+
+bool Fixed::operator==(const Fixed& obj) const
+{
+	return (this->fixedPoint == obj.fixedPoint);
+}
+
+bool Fixed::operator!=(const Fixed& obj) const
+{
+	return (this->fixedPoint != obj.fixedPoint);
+}
+
+Fixed	Fixed::operator+(const Fixed& obj) const
+{
+	return (this->toFloat() + obj.toFloat() );
+}
+
+Fixed	Fixed::operator-(const Fixed& obj) const
+{
+	return (this->toFloat() - obj.toFloat() );
+}
+
+Fixed	Fixed::operator*(const Fixed& obj) const
+{
+	return (this->toFloat() * obj.toFloat() );
+}
+
+Fixed	Fixed::operator/(const Fixed& obj) const
+{
+	return (this->toFloat() / obj.toFloat() );
+}
+
+Fixed	Fixed::operator++(int)
+{
+	Fixed no;
+
+	no = *this;
+	fixedPoint++;
+	return (no);
+}
+
+Fixed	Fixed::operator--(int)
+{
+	Fixed no;
+
+	no = *this;
+	fixedPoint--;
+	return (no);
+}
+
+Fixed	Fixed::operator++()
+{
+	fixedPoint++;
+	return (*this);
+}
+
+Fixed	Fixed::operator--()
+{
+	fixedPoint--;
+	return (*this);
+}
+
+Fixed&	 Fixed::min(const Fixed& obj)
+{
+	return ()
 }

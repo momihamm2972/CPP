@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 03:04:45 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/24 05:21:00 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/24 06:30:37 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+// #include <bool>
 
 class Fixed
 {
@@ -32,5 +33,23 @@ class Fixed
 		void setRawBits( int const raw );
 		float toFloat( void ) const;
 		int toInt( void ) const;
+		bool operator<(const Fixed& obj) const;
+		bool operator>(const Fixed& obj) const;
+		bool operator>=(const Fixed& obj) const;
+		bool operator<=(const Fixed& obj) const;
+		bool operator==(const Fixed& obj) const;
+		bool operator!=(const Fixed& obj) const;
+		Fixed	operator+(const Fixed& obj) const;
+		Fixed	operator-(const Fixed& obj) const;
+		Fixed	operator*(const Fixed& obj) const;
+		Fixed	operator/(const Fixed& obj) const;
+		Fixed	operator++(int);
+		Fixed	operator--(int);
+		Fixed	operator++();
+		Fixed	operator--();
+		static Fixed&	 min(const Fixed& obj);
 };
 std::ostream& operator<<(std::ostream& os, const Fixed& obj);
+/*
+while (a > b)
+*/

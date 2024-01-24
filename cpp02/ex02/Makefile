@@ -6,11 +6,11 @@
 #    By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/22 03:04:56 by momihamm          #+#    #+#              #
-#    Updated: 2024/01/24 03:02:54 by momihamm         ###   ########.fr        #
+#    Updated: 2024/01/24 05:37:14 by momihamm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = usefulFixed
+NAME = talking
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 FILES = $(wildcard *.cpp)

@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 03:04:52 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/24 05:29:08 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/24 23:26:50 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,41 +15,25 @@
 int main(void)
 {
     Fixed a;
-    Fixed const b(10);
-    Fixed const c(42.42f);
-    Fixed const d(b);
-    a = Fixed(1234.4321f);
-    std::cout << "a is " << a << std::endl;
-    std::cout << "b is " << b << std::endl;
-    std::cout << "c is " << c << std::endl;
-    std::cout << "d is " << d << std::endl;
-    std::cout << "a is " << a.toInt() << " as integer" << std::endl;
-    std::cout << "b is " << b.toInt() << " as integer" << std::endl;
-    std::cout << "c is " << c.toInt() << " as integer" << std::endl;
-    std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+    Fixed const b(Fixed(5.05f) * Fixed(2));
+    std::cout << a << std::endl;
+    std::cout << ++a << std::endl;
+    std::cout << a << std::endl;
+    std::cout << a++ << std::endl;
+    std::cout << a << std::endl;
+    std::cout << b << std::endl;
+    std::cout << Fixed::max(a, b) << std::endl;
     return 0;
 }
 /*
 
-Default constructor called
-Int constructor called
-Float constructor called
-Copy constructor called
-Copy assignment operator called
-Float constructor called
-Copy assignment operator called
-Destructor called
-a is 1234.43
-b is 10
-c is 42.4219
-d is 10
-a is 1234 as integer
-b is 10 as integer
-c is 42 as integer
-d is 10 as integer
-Destructor called
-Destructor called
-Destructor called
-Destructor called
+$> ./a.out
+0
+0.00390625
+0.00390625
+0.00390625
+0.0078125
+10.1016
+10.1016
 
 */

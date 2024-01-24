@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 03:04:45 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/24 06:30:37 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/24 23:29:49 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ class Fixed
 		Fixed	operator--(int);
 		Fixed	operator++();
 		Fixed	operator--();
-		static Fixed&	 min(const Fixed& obj);
+		static Fixed&	 min(Fixed& a, Fixed& b);
+		static Fixed&	 min(const Fixed& a, const Fixed& b);
+		static Fixed&	 max(Fixed& a, Fixed& b);
+		static Fixed&	 max(const Fixed& a, const Fixed& b);
 };
 std::ostream& operator<<(std::ostream& os, const Fixed& obj);
-/*
-while (a > b)
-*/

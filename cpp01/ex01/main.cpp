@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 12:56:41 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/19 17:20:18 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/22 21:08:46 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int main()
 {
     Zombie *test;
+    int num = 20;
 
-    test = zombieHorde(5, "mol_kotchi");
+    test = zombieHorde(num, "mol_kotchi");
     delete  [] test;
 }

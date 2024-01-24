@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/21 02:03:56 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/22 02:58:35 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/23 01:40:17 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ class Harl
 		void	(Harl::*ptr[4])();
 	public :
 		Harl();
-		// Harl();
 		void	complain( std::string level );
 };
 

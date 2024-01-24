@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 22:39:44 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/22 00:44:15 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/22 21:27:59 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	checkIfTher(std::ofstream& outfile, std::string input, std::string acc, std:
 {
 	int	found = 0;
 	while (1)
-	{puts("here");
+	{
 		found = input.find(acc);
 		if ((unsigned long)found == std::string::npos)
 		{

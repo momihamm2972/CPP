@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 22:39:38 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/22 00:50:46 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/22 21:28:16 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int main(int ac, char **av)
 		else
 		{
 			while (1)
-			{puts("here1");
+			{
 				if ((std::getline(infile, input)).eof())
 				{
 					checkIfTher(outfile, input, s1, s2, 1);

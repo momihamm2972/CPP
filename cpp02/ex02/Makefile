@@ -5,23 +5,22 @@
 #                                                     +:+ +:+         +:+      #
 #    By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/19 12:56:46 by momihamm          #+#    #+#              #
-#    Updated: 2024/01/22 21:21:36 by momihamm         ###   ########.fr        #
+#    Created: 2024/01/22 03:04:56 by momihamm          #+#    #+#              #
+#    Updated: 2024/01/24 03:02:54 by momihamm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Moarbrainz
+NAME = usefulFixed
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
-FILES = main.cpp        \
-		Zombie.cpp		\
-		zombieHorde.cpp
+FILES = $(wildcard *.cpp)
+INC = $(wildcard *.hpp)
 
 OBJ = $(FILES:.cpp=.o)
 
 all : $(NAME)
 
-%.o : %.cpp Zombie.hpp
+%.o : %.cpp $(INC)
 	$(CC) $(FLAGS) -c $< -o $@
 
 $(NAME) : $(OBJ)

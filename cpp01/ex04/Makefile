@@ -6,7 +6,7 @@
 #    By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/19 22:39:41 by momihamm          #+#    #+#              #
-#    Updated: 2024/01/21 23:51:27 by momihamm         ###   ########.fr        #
+#    Updated: 2024/01/22 21:22:01 by momihamm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,10 @@ OBJ = $(FILES:.cpp=.o)
 
 all : $(NAME)
 
-%.o : %.cpp
+%.o : %.cpp mySed.hpp
 	$(CC) $(FLAGS) -c $< -o $@
 
-$(NAME) : $(OBJ) mySed.hpp
+$(NAME) : $(OBJ)
 	$(CC) $(FILES) $(FLAGS) -o $(NAME)
 
 clean :

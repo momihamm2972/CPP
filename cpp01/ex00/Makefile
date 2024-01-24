@@ -6,7 +6,7 @@
 #    By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/05 10:24:33 by momihamm          #+#    #+#              #
-#    Updated: 2024/01/19 16:42:53 by momihamm         ###   ########.fr        #
+#    Updated: 2024/01/22 21:21:20 by momihamm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,10 @@ OBJ = $(FILES:.cpp=.o)
 
 all : $(NAME)
 
-%.o : %.cpp
+%.o : %.cpp Zombie.hpp
 	$(CC) $(FLAGS) -c $< -o $@
 
-$(NAME) : $(OBJ) Zombie.hpp
+$(NAME) : $(OBJ)
 	$(CC) $(FILES) $(FLAGS) -o $(NAME)
 
 clean :

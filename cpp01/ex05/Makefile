@@ -6,7 +6,7 @@
 #    By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/21 02:04:01 by momihamm          #+#    #+#              #
-#    Updated: 2024/01/21 02:05:02 by momihamm         ###   ########.fr        #
+#    Updated: 2024/01/22 21:22:24 by momihamm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,10 @@ OBJ = $(FILES:.cpp=.o)
 
 all : $(NAME)
 
-%.o : %.cpp
+%.o : %.cpp Harl.hpp
 	$(CC) $(FLAGS) -c $< -o $@
 
-$(NAME) : $(OBJ) Harl.hpp
+$(NAME) : $(OBJ)
 	$(CC) $(FILES) $(FLAGS) -o $(NAME)
 
 clean :

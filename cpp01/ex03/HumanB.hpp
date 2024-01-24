@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 18:01:00 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/19 22:11:46 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/23 01:38:48 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ private:
     std::string name;
     Weapon*  gun;
 public:
+    HumanB();
     HumanB(std::string);
     ~HumanB();
     void    setWeapon(Weapon& newGun);

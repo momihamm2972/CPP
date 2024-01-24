@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 18:01:08 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/19 20:54:00 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/23 01:13:44 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Weapon
 	public :
 		Weapon( std::string newtype );
 		~Weapon();
-		std::string	getType();
+		const std::string&	getType();
 		void		setType(std::string newType);
 };
 

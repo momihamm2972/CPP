@@ -6,7 +6,7 @@
 #    By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/19 18:00:10 by momihamm          #+#    #+#              #
-#    Updated: 2024/01/19 18:43:04 by momihamm         ###   ########.fr        #
+#    Updated: 2024/01/22 21:20:45 by momihamm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,10 @@ OBJ = $(FILES:.cpp=.o)
 
 all : $(NAME)
 
-%.o : %.cpp
+%.o : %.cpp Weapon.hpp HumanA.hpp HumanB.hpp
 	$(CC) $(FLAGS) -c $< -o $@
 
-$(NAME) : $(OBJ) Weapon.hpp HumanA.hpp HumanB.hpp
+$(NAME) : $(OBJ) 
 	$(CC) $(FILES) $(FLAGS) -o $(NAME)
 
 clean :

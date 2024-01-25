@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 03:04:39 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/24 05:31:22 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/25 05:12:22 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ int	Fixed::toInt( void ) const
 	return (fixedPoint >> fractional);
 }
 
-std::ostream& operator<<(std::ostream& os, const Fixed& obj)
+std::ostream& operator<<(std::ostream& out, const Fixed& obj)
 {
-	os << obj.toFloat();
-	return (os);
+	out << obj.toFloat();
+	return (out);
 }

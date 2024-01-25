@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 03:04:45 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/24 23:29:49 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/25 05:24:27 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include <iostream>
 #include <string>
 #include <cmath>
-// #include <bool>
 
 class Fixed
 {

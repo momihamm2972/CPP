@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 00:02:37 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/27 00:51:26 by momihamm         ###   ########.fr       */
+/*   Created: 2024/01/26 22:31:26 by momihamm          #+#    #+#             */
+/*   Updated: 2024/01/27 05:15:56 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
+
 #include "ClapTrap.hpp"
 
-int main()
+class ScavTrap : public ClapTrap
 {
-    ClapTrap a;
-    a.attack("l3do");
-    a.takeDamage(4);
-    a.beRepaired(1);
-}
+    public :
+        ScavTrap();
+        ScavTrap(const std::string& newName);
+        ScavTrap(const ScavTrap& obj);
+        ScavTrap& operator=(const ScavTrap& obj);
+        ~ScavTrap();
+        void guardGate();
+        void attack(const std::string& target);
+};

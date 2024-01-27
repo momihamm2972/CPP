@@ -5,17 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 00:02:37 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/27 00:51:26 by momihamm         ###   ########.fr       */
+/*   Created: 2024/01/27 03:44:34 by momihamm          #+#    #+#             */
+/*   Updated: 2024/01/27 03:44:35 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
-
-int main()
-{
-    ClapTrap a;
-    a.attack("l3do");
-    a.takeDamage(4);
-    a.beRepaired(1);
-}

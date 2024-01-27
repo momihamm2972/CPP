@@ -5,17 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 00:02:37 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/27 00:51:26 by momihamm         ###   ########.fr       */
+/*   Created: 2024/01/26 22:31:18 by momihamm          #+#    #+#             */
+/*   Updated: 2024/01/27 08:26:38 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 int main()
 {
-    ClapTrap a;
-    a.attack("l3do");
-    a.takeDamage(4);
-    a.beRepaired(1);
+    ScavTrap b;
+    ScavTrap a("no_name");
+    a.attack("russia");
+    b = a;
+    b.attack("kk");
 }

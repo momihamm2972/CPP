@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 00:02:33 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/26 23:10:11 by momihamm         ###   ########.fr       */
+/*   Created: 2024/01/26 22:31:16 by momihamm          #+#    #+#             */
+/*   Updated: 2024/01/27 04:36:45 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 class ClapTrap
 {
-    private :
-        std::string	name;
-        int			hit;
+    protected :
+		std::string	name;
+		int			hit;
 		int			energy;
 		int			damage;
 	public :

@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 00:02:29 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/27 00:52:19 by momihamm         ###   ########.fr       */
+/*   Created: 2024/01/26 22:31:13 by momihamm          #+#    #+#             */
+/*   Updated: 2024/01/27 08:18:46 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 ClapTrap::ClapTrap()
 {
@@ -24,6 +24,7 @@ ClapTrap::ClapTrap()
 ClapTrap::ClapTrap(const std::string& newName)
 {
     name = newName;
+    std::cout << "The Parm constructor of ClapTrap has been called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& obj)

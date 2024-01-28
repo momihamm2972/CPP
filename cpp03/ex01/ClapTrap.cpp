@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 22:31:13 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/27 08:18:46 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/27 23:23:02 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& obj)
 
 ClapTrap ::~ClapTrap()
 {
-    std::cout << "Destructor called" << std::endl;
+    std::cout << "ClapTrap Destructor called" << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target)
@@ -56,11 +56,11 @@ void ClapTrap::attack(const std::string& target)
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-    std::cout << "ClapTrap took " << amount << " of damage" << std::endl;
     if (amount > (unsigned int)hit)
         this->hit = 0;
     else
         this->hit -= amount;
+    std::cout << "ClapTrap took " << amount << " of damage" << std::endl;
 }
 
 void    ClapTrap::beRepaired(unsigned int amount)

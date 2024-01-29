@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/29 02:43:03 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/29 06:04:32 by momihamm         ###   ########.fr       */
+/*   Created: 2024/01/29 02:59:11 by momihamm          #+#    #+#             */
+/*   Updated: 2024/01/29 06:02:52 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,3 +39,4 @@ void WrongAnimal::makeSound() const
 {
     std::cout << "WrongAnimal,WrongAnimal!!" << std::endl;
 }
+

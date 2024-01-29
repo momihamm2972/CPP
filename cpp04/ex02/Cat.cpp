@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/28 21:13:05 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/29 02:57:46 by momihamm         ###   ########.fr       */
+/*   Created: 2024/01/29 02:57:41 by momihamm          #+#    #+#             */
+/*   Updated: 2024/01/29 05:26:24 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,38 @@
 
 Cat::Cat()
 {
-    type = "Cat";
-    std::cout << "The Default constructor of Cat has been called" << std::endl;
+	type = "Cat";
+	brain = new Brain ();
+	std::cout << "The Default constructor of Cat has been called" << std::endl;
 }
 
 
 Cat::Cat(const Cat& obj)
 {
-    *this = obj;
-    std::cout << "The Copy constructor of Cat has been called" << std::endl;
+	this->brain = new Brain(*obj.brain);
+	*this = obj;
+	std::cout << "The Copy constructor of Cat has been called" << std::endl;
 }
 
 Cat& Cat::operator=(const Cat& obj)
 {
-    this->type = obj.type;
-    std::cout << "The Copy assignment operator of Cat has been called" << std::endl;
-    return (*this);
+	if (this != &obj)
+	{
+		delete this->brain;
+		this->brain = new Brain(*obj.brain);
+		this->type = obj.type;
+	}
+	std::cout << "The Copy assignment operator of Cat has been called" << std::endl;
+	return (*this);
 }
 
 Cat::~Cat()
 {
-    std::cout << "The Destructor of Cat has been called" << std::endl;
+	delete brain;
+	std::cout << "The Destructor of Cat has been called" << std::endl;
 }
 
 void Cat::makeSound() const
 {
-    std::cout << "MIYAWE,MIYAWE!!" << std::endl;
+	std::cout << "MIYAWE,MIYAWE!!" << std::endl;
 }

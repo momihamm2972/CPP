@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 21:14:33 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/29 01:50:59 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/29 04:01:15 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,3 +27,4 @@ class Animal
         virtual void makeSound() const;
 		std::string getType() const;
 };
+//pure virtual

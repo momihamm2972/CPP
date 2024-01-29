@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 22:31:13 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/27 23:23:02 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/28 03:22:38 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ ClapTrap::ClapTrap()
     hit = 10;
     energy = 10;
     damage = 0;
-    std::cout << "Default constructor called" << std::endl;
+    std::cout << "Default constructor of ClapTrap called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const std::string& newName)
@@ -30,13 +30,13 @@ ClapTrap::ClapTrap(const std::string& newName)
 ClapTrap::ClapTrap(const ClapTrap& obj)
 {
     *this = obj;
-    std::cout << "Copy constructor called" << std::endl;
+    std::cout << "Copy constructor of ClapTrap called" << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& obj)
 {
     this->name = obj.name;
-    std::cout << "Copy assignment operator called" << std::endl;
+    std::cout << "Copy assignment operator of ClapTrap called" << std::endl;
     return (*this);
 }
 

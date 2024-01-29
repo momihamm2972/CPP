@@ -6,15 +6,15 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 03:44:29 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/28 01:31:26 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/28 03:34:22 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 
-FragTrap::FragTrap()
+FragTrap::FragTrap() : ClapTrap("Default")
 {
-    name = "Default";
+    // name = "Default";
     hit = 100;
     energy = 100;
     damage = 30;
@@ -23,7 +23,7 @@ FragTrap::FragTrap()
 
 FragTrap::FragTrap(const std::string& newName) : ClapTrap(newName)
 {
-    name = newName;
+    // name = newName;
     hit = 100;
     energy = 100;
     damage = 30;

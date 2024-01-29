@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/26 22:31:16 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/28 03:30:26 by momihamm         ###   ########.fr       */
+/*   Created: 2024/01/28 21:14:33 by momihamm          #+#    #+#             */
+/*   Updated: 2024/01/29 01:50:59 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,15 @@
 #include <iostream>
 #include <string>
 
-class ClapTrap
+class Animal
 {
     protected :
-		std::string	name;
-		int			hit;
-		int			energy;
-		int			damage;
-	public :
-		ClapTrap();
-		ClapTrap(const std::string& newName);
-		ClapTrap(const ClapTrap& obj);
-		ClapTrap& operator=(const ClapTrap& obj);
-		~ClapTrap();
-		void attack(const std::string& target);
-		void takeDamage(unsigned int amount);
-		void beRepaired(unsigned int amount);
+		std::string type;
+    public :
+        Animal();
+        Animal(const Animal& obj);
+        Animal& operator=(const Animal& obj);
+        virtual ~Animal();
+        virtual void makeSound() const;
+		std::string getType() const;
 };

@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 22:31:24 by momihamm          #+#    #+#             */
-/*   Updated: 2024/01/28 01:28:29 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/01/28 04:07:48 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,48 +14,48 @@
 
 ScavTrap::ScavTrap()
 {
-    name = "Default";
-    hit = 100;
-    energy = 50;
-    damage = 20;
-    std::cout << "The Default constructor of ScavTrap has been called" << std::endl;
+	name = "Default";
+	hit = 100;
+	energy = 50;
+	damage = 20;
+	std::cout << "The Default constructor of ScavTrap has been called" << std::endl;
 }
 
 ScavTrap::ScavTrap(const std::string& newName) : ClapTrap(newName)
 {
-    name = newName;
-    hit = 100;
-    energy = 50;
-    damage = 20;
+	name = newName;
+	hit = 100;
+	energy = 50;
+	damage = 20;
 	std::cout << "The Parm constructor of ScavTrap has been called" << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& obj) : ClapTrap(obj)
 {
-    // this->name = obj.name;
-    std::cout << "The Copy constructor of ScavTrap has been called" << std::endl;
+	// this->name = obj.name;
+	std::cout << "The Copy constructor of ScavTrap has been called" << std::endl;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& obj)
 {
-    ClapTrap::operator=(obj);
-    // this->name = obj.name;
-    std::cout << "The Copy assignment operator of ScavTrap has been called" << std::endl;
-    return (*this);
+	ClapTrap::operator=(obj);
+	// this->name = obj.name;
+	std::cout << "The Copy assignment operator of ScavTrap has been called" << std::endl;
+	return (*this);
 }
 
 ScavTrap::~ScavTrap()
 {
-    std::cout << "The Destructor of ScavTrap has been called" << std::endl;
+	std::cout << "The Destructor of ScavTrap has been called" << std::endl;
 }
 
 void ScavTrap::attack(const std::string& target)
 {
 	if (this->energy > 0 && this->hit > 0)
-    {
-        std::cout << "ScavTrap " << name << " attacks " << target << ", causing " << this->damage << "  points of damage!" << std::endl;
-        this->energy--;
-    }
+	{
+		std::cout << "ScavTrap " << name << " attacks " << target << ", causing " << this->damage << "  points of damage!" << std::endl;
+		this->energy--;
+	}
 }
 
 void ScavTrap::guardGate()

@@ -5,33 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/14 22:36:33 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/21 19:33:39 by momihamm         ###   ########.fr       */
+/*   Created: 2024/10/24 03:19:52 by momihamm          #+#    #+#             */
+/*   Updated: 2024/10/24 22:46:37 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "ScalarConverter.hpp"
 
-int main()
+int main(int ac, char **av)
 {
-    try
-    {
-        Bureaucrat b1("b1", 2);
-        Form f1("f1", 2, 1);
-
-        std::cout << b1 << std::endl;
-        std::cout << f1 << std::endl;
-
-        b1.incrementGrade();
-        std::cout << b1 << std::endl;
-        b1.decrementGrade();
-        std::cout << b1 << std::endl;
-        b1.signForm(f1);
-    }
-    catch (std::exception &e)
-    {
-        std::cout << e.what() << std::endl;
-    }
-    return (0);
+	if (ac != 2)
+		return (std::cout<<"Error: Wrong number of arguments"<<std::endl, 1);
+	try
+	{
+		ScalarConverter::convert(av[1]);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	return (0);
 }

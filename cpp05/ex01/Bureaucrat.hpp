@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 22:36:25 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/14 22:37:29 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:24:28 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
@@ -41,6 +44,7 @@ class Bureaucrat
             public :
                 virtual const char* what() const throw();
         };
+        void    signForm(Form& form);
 };
 
     std::ostream& operator<<(std::ostream& out, const Bureaucrat& bureaucrat);

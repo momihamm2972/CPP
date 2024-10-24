@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/10/14 22:36:36 by momihamm          #+#    #+#              #
-#    Updated: 2024/10/15 00:17:53 by momihamm         ###   ########.fr        #
+#    Created: 2024/10/24 03:18:37 by momihamm          #+#    #+#              #
+#    Updated: 2024/10/24 21:31:55 by momihamm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME =  fromUp
+NAME = convert
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 FILES = $(wildcard *.cpp)

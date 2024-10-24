@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 08:40:44 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/14 22:34:46 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/15 01:20:45 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 int main()
 {
-    Bureaucrat jondi("bozbal", 3);
     try
     {
-        jondi.incrementGrade();
+        Bureaucrat bureau("name", 150);
+        bureau.decrementGrade();
+        std::cout << bureau << std::endl;
     }
-    catch (std::exception & e)
+    catch (std::exception &e)
     {
         std::cout << e.what() << std::endl;
     }
-    // std::cout << jondi << std::endl;
+    return (0);
 }

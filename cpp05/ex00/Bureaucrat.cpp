@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 08:40:42 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/14 22:27:09 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/21 21:03:42 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,31 +15,27 @@
 Bureaucrat::Bureaucrat():name("")
 {
     grade = 150;
-    std::cout << "The Default constructor of Bureaucrat has been called" << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string no_name, int no_grade) : name(no_name) ,  grade(no_grade)
 {
-    std::cout << "The parameterized constructor of Bureaucrat has been called" << std::endl;
+
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& obj)
 {
     *this = obj;
-    std::cout << "The Copy constructor of Bureaucrat has been called" << std::endl;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& obj)
 {
     this->grade = obj.grade;
-    // this->name = obj.name;
-    std::cout << "The Copy assignment operator of Bureaucrat has been called" << std::endl;
     return *this;
 }
 
 Bureaucrat::~Bureaucrat()
 {
-    std::cout << "The Destructor of Bureaucrat has been called" << std::endl;
+
 }
 
 std::string Bureaucrat::getName() const

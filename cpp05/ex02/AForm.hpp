@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 19:38:01 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/24 02:44:01 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:09:54 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ class AForm
             virtual const char* what() const throw();
     };
     void            beSigned(Bureaucrat& bureaucrat);
-    virtual void    execute(Bureaucrat const & exiter) const = 0;
+    virtual void    
+    execute(Bureaucrat const & exiter) const = 0;
 };
 
     std::ostream& operator<<(std::ostream& out, const AForm& AForm);

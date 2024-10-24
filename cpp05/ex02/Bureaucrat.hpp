@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 19:38:05 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/24 02:44:36 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:17:10 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ class Bureaucrat
             public :
                 virtual const char* what() const throw();
         };
-        void    signForm(AForm form);
+        void    signForm(AForm& form);
         void    executeForm(AForm const & form);
 };
 

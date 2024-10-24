@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 19:38:03 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/24 02:45:26 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:16:55 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
     return ("Grade is too Low!");
 }
 
-void    Bureaucrat::signForm(AForm form)
+void    Bureaucrat::signForm(AForm& form)
 {
     form.beSigned(*this);
     std::cout << getName() << " signed " << form.getName() << std::endl;

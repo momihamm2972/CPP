@@ -6,18 +6,18 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 19:38:19 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/24 03:12:27 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/24 17:15:07 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm() : AForm("ShrubberyCreationForm" , 72, 45) , soldier("soldier")
+RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm" , 72, 45) , soldier("soldier")
 {
     
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string &_soldier) : AForm("ShrubberyCreationForm" , 72, 45) , soldier(_soldier)
+RobotomyRequestForm::RobotomyRequestForm(const std::string &_soldier) : AForm("RobotomyRequestForm" , 72, 45) , soldier(_soldier)
 {
     
 }

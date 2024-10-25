@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 19:38:19 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/24 17:15:07 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/25 00:29:19 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm & obj) : AFor
 
 RobotomyRequestForm & RobotomyRequestForm::operator=(const RobotomyRequestForm & obj)
 {
-    this->soldier = obj.soldier;
+    if (this != &obj)
+        this->soldier = obj.soldier;
     return (*this);
 }
 

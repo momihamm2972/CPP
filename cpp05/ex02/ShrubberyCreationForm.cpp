@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 19:38:24 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/24 03:07:35 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/25 00:55:40 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm & obj) 
 
 ShrubberyCreationForm & ShrubberyCreationForm::operator=(const ShrubberyCreationForm & obj)
 {
-    this->soldier = obj.soldier;
+    if (this != &obj)
+        this->soldier = obj.soldier;
     return (*this);
 }
 

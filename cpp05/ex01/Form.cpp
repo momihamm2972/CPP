@@ -6,34 +6,34 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 22:36:28 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/21 21:05:53 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/25 01:23:30 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form() : name("")
+Form::Form() : name("default") , isSigned(false), gradeToExecut(1) , gradeToSign(1)
 {
-    isSigned = false;
-    gradeToExecut = 150;
-    gradeToSign = 150;
+
 }
 
-Form::Form(const Form& obj)
+Form::Form(const Form& obj) : name(obj.name), gradeToExecut(obj.gradeToExecut) , gradeToSign(obj.gradeToSign)
 {
     *this = obj;
 }
 
-Form::Form(std::string _name, int gradeEx, int gradeSn) : name(_name) , gradeToExecut(gradeEx) , gradeToSign(gradeSn)
+Form::Form(std::string _name, int gradeEx, int gradeSn) : name(_name) , isSigned(false) , gradeToExecut(gradeEx) , gradeToSign(gradeSn) 
 {
-
+    if (gradeToSign < 1 || gradeToExecut < 1)
+		throw GradeTooHighException();
+	else if (gradeToSign > 150 || gradeToExecut > 150)
+		throw GradeTooLowException();
 }
 
 Form& Form::operator=(const Form& obj)
 {
-    this->isSigned = obj.isSigned;
-    this->gradeToExecut = obj.gradeToExecut;
-    this->gradeToSign = obj.gradeToSign;
+    if (this != &obj)
+        this->isSigned = obj.isSigned;
     return *this;
 }
 

@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 19:38:01 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/24 17:09:54 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/25 00:25:49 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ class Bureaucrat;
 class AForm
 {
     private :
-        const std::string   name;
-        bool                isSigned;
-        int                 gradeToExecut;
-        int                 gradeToSign;
+        const std::string           name;
+        bool                        isSigned;
+        const int                   gradeToExecut;
+        const int                   gradeToSign;
     public :
-    AForm();
-    AForm(std::string _name, int gradeEx, int gradeSn);
-    AForm(const AForm& obj);
+        AForm();
+        AForm(std::string _name, int gradeEx, int gradeSn);
+        AForm(const AForm& obj);
     AForm& operator=(const AForm& obj);
     virtual ~AForm();
     std::string     getName() const;
@@ -36,27 +36,20 @@ class AForm
     class           GradeTooHighException : public std::exception
     {
         public :
-            virtual const char* what() const throw();
+             const char* what() const throw();
     };
     class           GradeTooLowException : public std::exception
     {
         public :
-            virtual const char* what() const throw();
+            const char* what() const throw();
     };
     class           AFormNotSignedException : public std::exception
     {
         public :
-            virtual const char* what() const throw();
+            const char* what() const throw();
     };
     void            beSigned(Bureaucrat& bureaucrat);
-    virtual void    
-    execute(Bureaucrat const & exiter) const = 0;
+    virtual void    execute(Bureaucrat const & exiter) const = 0;
 };
 
     std::ostream& operator<<(std::ostream& out, const AForm& AForm);
-
-
-
-
-    // virtual void		execute(Bureaucrat const & executor) const = 0;
-    // class AFormNotSignedException : public std::exception

@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 19:38:08 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/24 17:16:19 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/25 00:57:03 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,15 @@ int main()
 {
 	try
 	{
-		Bureaucrat bob("bob", 5);
+		Bureaucrat bob("bob", 1);
 		RobotomyRequestForm form("form");
+		ShrubberyCreationForm f01("mo7a");
 		bob.signForm(form);
+		
 		form.execute(bob);
 		bob.executeForm(form);
+		bob.signForm(f01);
+		f01.execute(bob);
 	}
 	catch (std::exception &e)
 	{

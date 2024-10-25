@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 22:36:25 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/24 17:24:28 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/24 23:42:41 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ class Bureaucrat
         class   GradeTooHighException : public std::exception
         {
             public :
-                virtual const char* what() const throw();
+                const char* what() const throw();
         };
         class   GradeTooLowException : public std::exception
         {
             public :
-                virtual const char* what() const throw();
+                const char* what() const throw();
         };
         void    signForm(Form& form);
 };

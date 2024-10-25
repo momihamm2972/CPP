@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 17:25:49 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/24 20:32:49 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/25 00:59:32 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main()
 	{
 		Intern someRandomIntern;
 		AForm* rrf;
-		Bureaucrat bender("Bender", 70);
+		Bureaucrat bender("Bender", 1);
 		rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 		rrf->beSigned(bender);
 		std::cout << *rrf << std::endl;

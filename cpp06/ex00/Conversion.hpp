@@ -6,13 +6,13 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 03:19:55 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/24 22:42:41 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/25 20:22:51 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <iostrem>
+#include <iostream>
 
 enum e_type
 {
@@ -35,6 +35,6 @@ class ScalarConverter
         void    charCovert();
         void    floatCovert();
         void    doubleCovert();
-    puclic :
+    public :
         static void convert(const std::string& str);
 };

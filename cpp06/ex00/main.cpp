@@ -6,11 +6,11 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 03:19:52 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/24 22:46:37 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/25 20:26:59 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#include "Conversion.hpp"
 
 int main(int ac, char **av)
 {

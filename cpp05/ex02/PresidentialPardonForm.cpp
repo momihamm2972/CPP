@@ -6,18 +6,18 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 19:38:13 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/25 00:28:37 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/25 02:59:25 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm() : AForm("ShrubberyCreationForm" , 25, 5) , soldier("soldier")
+PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm" , 25, 5) , soldier("soldier")
 {
     
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string &_soldier) : AForm("ShrubberyCreationForm" , 25, 5) , soldier(_soldier)
+PresidentialPardonForm::PresidentialPardonForm(const std::string &_soldier) : AForm("PresidentialPardonForm" , 25, 5) , soldier(_soldier)
 {
     
 }

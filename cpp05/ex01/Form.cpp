@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 22:36:28 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/25 01:23:30 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/25 02:48:14 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ const char* Form::GradeTooLowException::what() const throw()
 
 std::ostream& operator<<(std::ostream& out, const Form& form)
 {
-    out << form.getName() << ", Form grade to execut " << form.getGradeToExecut() << ", Form grade to sing " << form.getGradeToSign() << ", is sini " << form.getSing() <<"." << std::endl;
+    out << form.getName() << ", Form grade to execut " << form.getGradeToExecut() << ", Form grade to singe " << form.getGradeToSign() << ", is " << (form.getSing() ? "signed" : "not singed") << "." << std::endl;
     return out;
 }
 

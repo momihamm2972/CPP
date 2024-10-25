@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 19:38:16 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/24 02:53:03 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/25 02:58:32 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class PresidentialPardonForm : public AForm
         std::string     soldier;
     public :
         PresidentialPardonForm();
-        PresidentialPardonForm(std::string &_soldier);
+        PresidentialPardonForm(const std::string &_soldier);
         PresidentialPardonForm(const PresidentialPardonForm & obj);
         PresidentialPardonForm & operator=(const PresidentialPardonForm & obj);
         ~PresidentialPardonForm();

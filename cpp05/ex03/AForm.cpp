@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 17:25:32 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/24 17:27:26 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/25 03:17:50 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ const char* AForm::AFormNotSignedException::what() const throw()
 
 std::ostream& operator<<(std::ostream& out, const AForm& form)
 {
-    out << form.getName() << ", Form grade to execut " << form.getGradeToExecut() << ", Form grade to sing " << form.getGradeToSign() << ", is sini " << form.getSing() <<"." << std::endl;
+    out << form.getName() << ", Form grade to execut " << form.getGradeToExecut() << ", Form grade to sing " << form.getGradeToSign() << ", is sing " << (form.getSing() ? "is singed" : "is not singed") <<"." << std::endl;
     return out;
 }
 

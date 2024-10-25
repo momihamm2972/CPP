@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/21 19:38:19 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/25 00:29:19 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/25 03:06:10 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void    RobotomyRequestForm::execute(const Bureaucrat & executor) const
         throw GradeTooHighException();
     std::cout << "Nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnoises" << std::endl;
     if (intTime % 2 == 0)
-        std::cout << this->soldier << "has been robotomized successfull!!" << std::endl;
+        std::cout << this->soldier << " has been robotomized successfull!!" << std::endl;
     else
-        std::cout << this->soldier << "has not been robotomized successfull!!" << std::endl;
+        std::cout << this->soldier << " has not been robotomized successfull!!" << std::endl;
 }

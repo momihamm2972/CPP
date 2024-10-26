@@ -6,11 +6,11 @@
 #    By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/25 18:33:04 by momihamm          #+#    #+#              #
-#    Updated: 2024/10/25 18:33:06 by momihamm         ###   ########.fr        #
+#    Updated: 2024/10/26 17:27:28 by momihamm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = convert
+NAME = array
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 FILES = $(wildcard *.cpp)

@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 03:19:57 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/25 20:33:53 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/25 23:23:45 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,18 +186,6 @@ void	ScalarConverter::convert(const std::string& input)
 
 static void	typesResult(char c, int i, float f, double d)
 {
-	// i < 0 || i > 127 ?
-	// std::cout << "char: " << "impossible" << std::endl :
-	// i < 32 || i >= 127 ?
-	// std::cout << "char: " << "Non displayable" << std::endl :
-	// std::cout << "char: " << "\'"<< c << "\'" << std::endl;
-	// std::cout << "int: " << i << std::endl;
-	// f - i == 0 ?
-	// std::cout << "float: " << f << ".0f" << std::endl :
-	// std::cout << "float: " << f << "f" << std::endl;
-	// d - i == 0 ?
-	// std::cout << "double: " << d << ".0" << std::endl :
-	// std::cout << "double: " << d << std::endl;
 	if (i < 0 || i > 127)
 		std::cout << "char: " << "impossible" << std::endl;
 	else if (i < 32 || i >= 127)

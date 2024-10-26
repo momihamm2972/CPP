@@ -6,11 +6,11 @@
 #    By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/25 18:35:42 by momihamm          #+#    #+#              #
-#    Updated: 2024/10/25 18:35:45 by momihamm         ###   ########.fr        #
+#    Updated: 2024/10/26 17:56:09 by momihamm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = convert
+NAME = bitcoin
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 FILES = $(wildcard *.cpp)

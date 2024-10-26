@@ -1,0 +1,74 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   PmergeMe.hpp                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/10/26 18:01:47 by momihamm          #+#    #+#             */
+/*   Updated: 2024/10/26 18:03:20 by momihamm         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#pragma once
+
+#include <iostream>
+#include <sstream> // for istringstream
+#include <string>
+#include <vector>
+#include <deque>
+#include <utility> // for pair
+#include <ctime>
+#include <cmath>
+
+
+typedef std::vector<std::pair<int, int> >	t_pair;
+typedef std::vector<int>	t_vector;
+typedef std::deque<int>	t_deque;
+typedef std::deque<std::pair<int, int> >	t_dequePair;
+
+class PmergeMe
+{
+	private:
+		// Vector
+		t_vector	_pend;
+		t_pair		_numbers;
+		int			_struggler;
+		double		_timeTakenVec;
+		bool		_foundStruggler;
+		t_vector	_mainChain;
+		// Deque
+		t_deque		_pendDeq;
+		int			_strugglerDeq;
+		t_deque		_mainChainDeq;
+		t_dequePair	_numbersDeque;
+		double		_timeTakenDeque;
+		bool		_foundStrugglerDeq;
+	public:
+	/****************** constructor ********************/
+		PmergeMe();
+		~PmergeMe();
+	/****************** methods ***********************/
+		void		checkSign(char *av);
+		size_t		jacobsthal();
+		std::string	takingNumbers(char **av);
+		t_vector	getMainChain() const;
+		t_deque		getMainChainDeq() const;
+		void		printNumberVec();
+		void		printNumberDeq();
+		void		printStatus(size_t size, const std::string& container, double time) const;
+		/************** Vec *****************/
+		void		detecteLarge();
+		void		prepareSortPair();
+		void		createMainChainAndPend();
+		void		mergeNumbers(size_t jac);
+		void		mergeStruggler();
+		void		sortNumbersVec(const std::string &str);
+		/************** Deq *****************/
+		void		detecteLargeDeq();
+		void		prepareSortPairDeq();
+		void		createMainChainAndPendDeq();
+		void		mergeNumbersDeq(size_t jac);
+		void		sortNumbersDeq(const std::string &str);
+		void		mergeStrugglerDeq();
+};

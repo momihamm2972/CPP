@@ -6,11 +6,11 @@
 #    By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/25 18:34:51 by momihamm          #+#    #+#              #
-#    Updated: 2024/10/25 18:34:53 by momihamm         ###   ########.fr        #
+#    Updated: 2024/10/26 17:38:19 by momihamm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = convert
+NAME = easyfind
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 FILES = $(wildcard *.cpp)

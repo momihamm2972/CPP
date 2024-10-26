@@ -6,11 +6,14 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 23:41:03 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/26 01:14:54 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/26 07:03:27 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Base.hpp"
+#include "A.hpp"
+#include "B.hpp"
+#include "C.hpp"
 
 Base::~Base()
 {
@@ -37,7 +40,6 @@ Base * generate(void)
 	return (obj);
 }
 
-// ##########################
 void identify(Base* p)
 {
 	if (dynamic_cast<A*>(p))
@@ -76,7 +78,7 @@ void identify(Base& p)
 			}
 			catch(const std::exception& e)
 			{
-				std::cout << "Unknown" << std::endl;
+				std::cout << "Unknowin" << std::endl;
 			}
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 03:19:55 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/25 20:22:51 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/26 04:08:18 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,10 @@
 
 #include <iostream>
 
-enum e_type
-{
-	CHAR,
-	INT,
-	FLOAT,
-	DOUBLE
-};
+# define CHAR 0
+# define INT 1
+# define FLOAT 2
+# define DOUBLE 3
 
 class ScalarConverter
 {

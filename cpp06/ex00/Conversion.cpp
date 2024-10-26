@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 03:19:57 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/25 23:23:45 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/26 06:47:42 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,6 +202,7 @@ static void	typesResult(char c, int i, float f, double d)
 	else
 		std::cout << "double: " << d << std::endl;
 }
+// input= 6.5>> i=6 f=6.5f || inp=6 ==> i=6 f=6.0f
 
 void	ScalarConverter::charCovert()
 {

@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 17:49:25 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/26 17:51:18 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/27 11:51:51 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ MutantStack<T, Container>::MutantStack() : std::stack<T, Container>()
 }
 
 template <typename T, typename Container>
-MutantStack<T, Container>::MutantStack(MutantStack const &rhs) : std::stack<T, Container>(rhs)
+MutantStack<T, Container>::MutantStack(MutantStack const &obj) : std::stack<T, Container>(obj)
 {
 }
 
 template <typename T, typename Container>
-MutantStack<T, Container> &MutantStack<T, Container>::operator=(MutantStack const &rhs)
+MutantStack<T, Container> &MutantStack<T, Container>::operator=(MutantStack const &obj)
 {
-	if (this != &rhs)
-		std::stack<T, Container>::operator=(rhs);
+	if (this != &obj)
+		std::stack<T, Container>::operator=(obj);
 	return *this;
 }
 

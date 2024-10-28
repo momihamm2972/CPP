@@ -6,13 +6,13 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 17:53:54 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/26 17:54:52 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/27 20:00:06 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-std::map<Date, float> BitcoinExchange::currencies;
+std::map<Date, float> BitcoinExchange::coins;
 
 #pragma region Canonical
 BitcoinExchange::BitcoinExchange()
@@ -35,15 +35,14 @@ BitcoinExchange::~BitcoinExchange()
 }
 #pragma endregion Canonical
 
-static bool	checkHeader(std::string line)
+static bool	isHeader(std::string input)
 {
 	std::string header = "date | value";
-	if (line == header)
+	if (input == header)
 		return true;
 	return false;
 }
 
-// Function to trim spaces from the beginning and end of a string
 static std::string trim(const std::string& str)
 {
 	size_t first = str.find_first_not_of(' ');
@@ -53,52 +52,50 @@ static std::string trim(const std::string& str)
 	return str.substr(first, (last - first + 1));
 }
 
-static bool isLeapYear(int year)
+static bool checkLeapYear(int year)
 {
-	if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
+	if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
 		return true;
-	} else {
-		return false;
-	}
+	return (false);
 }
 
-static float	stringToFloat(const std::string& str)
+static float	convertStringToFloat(const std::string& inputString)
 {
-	std::istringstream iss(str);
-	float result;
-	iss >> result;
-	return result;
+	std::istringstream inputStream(inputString);
+	float floatValue;
+	inputStream >> floatValue;
+	return floatValue;
 }
 
-static bool	checkValue(const std::string& value)
+static bool	check_value_is_valid(const std::string& inputValue)
 {
-	int flagPoint = 0;
-	// for to check value is valid
-	for (size_t i = 0; i < value.length(); i++)
+	int decimalPointCount = 0;
+	
+	for (size_t i = 0; i < inputValue.length(); i++)
 	{
-		if (i == 0 && value[i] == '+')
+		if (i == 0 && inputValue[i] == '+')
 			continue ;
-		if (value[i] == '.' || value[i] == '0')
+		if (inputValue[i] == '.' || inputValue[i] == '0')
 		{
-			value[i] == '.' ? flagPoint++ : flagPoint;
-			if (flagPoint > 1 || (flagPoint && value.length() == 1))
+			inputValue[i] == '.' ? decimalPointCount++ : decimalPointCount;
+			if (decimalPointCount > 1 || (decimalPointCount && inputValue.length() == 1))
 				return (std::cout << "Error: invalid value" << std::endl, false);
 			continue ;
 		}
-		if (i == 0 && value[i] == '-')
-			throw std::invalid_argument("Error: not a positive number");
-		if (!std::isdigit(value[i]) && value[0] != '-')
+		if (i == 0 && inputValue[i] == '-')
+			return (std::cout << "Error: not a positive number" << std::endl, false);
+		if (!std::isdigit(inputValue[i]) && inputValue[0] != '-')
 			return (std::cout << "Error: invalid value" << std::endl, false);
 	}
-	float valueLong = stringToFloat(value);
-	if (valueLong > 1000)
+	float numericValue = convertStringToFloat(inputValue);
+	if (numericValue > 1000)
 		return (std::cout << "Error: too large a number" << std::endl, false);
-	if (valueLong < 0)
+	if (numericValue < 0)
 		return (std::cout << "Error: not a positive number" << std::endl, false);
 	return true;
 }
 
-static int stringToInt(const std::string& str)
+static int convertStringToInt(const std::string& str)
 {
 	std::istringstream iss(str);
 	int result;
@@ -106,96 +103,105 @@ static int stringToInt(const std::string& str)
 	return result;
 }
 
-
-bool	checkDate(const std::string& year, const std::string& month, const std::string& day)
+bool	isValidDate(const std::string& year, const std::string& month, const std::string& day)
 {
-	if (day.length() > 2 || month.length() > 2 || year.length() != 4)// check length
+	if (day.length() > 2 || month.length() > 2 || year.length() != 4)
 		return (std::cout << "Error: invalid date" << std::endl, false);
-	if (stringToInt(year) < 2005 || stringToInt(year) > 2024) // check year
+	if (convertStringToInt(year) < 2005 || convertStringToInt(year) > 2024)
 		return (std::cout << "Error: invalid year" << std::endl, false);
-	if (stringToInt(month) < 1 || stringToInt(month) > 12) // check month
+	if (convertStringToInt(month) < 1 || convertStringToInt(month) > 12)
 		return (std::cout << "Error: invalid month" << std::endl, false);
-	if (stringToInt(day) < 1 || stringToInt(day) > 31) // check day 
+	if (convertStringToInt(day) < 1 || convertStringToInt(day) > 31)
 		return (std::cout << "Error: invalid day" << std::endl, false);
-	if (isLeapYear(stringToInt(year)) && stringToInt(month) == 2 && stringToInt(day) > 29) // check leap year
+	if (checkLeapYear(convertStringToInt(year)) 
+		&& convertStringToInt(month) == 2
+			&& convertStringToInt(day) > 29)
 		return (std::cout << "Error: invalid day" << std::endl, false);
-	if (!isLeapYear(stringToInt(year)) && stringToInt(month) == 2 && stringToInt(day) > 28) // check leap year
+	if (!checkLeapYear(convertStringToInt(year)) 
+		&& convertStringToInt(month) == 2 
+			&& convertStringToInt(day) > 28)
 		return (std::cout << "Error: invalid day" << std::endl, false);
 	return true;
 }
 
-void	BitcoinExchange::parseInsertData(const std::string& year, const std::string& month, const std::string& day, const std::string& value)
+
+void BitcoinExchange::insertBitcoinRecord(const std::string& yearStr, const std::string& monthStr, const std::string& dayStr, const std::string& valueStr)
 {
-	BitcoinExchange::currencies.insert(std::pair<Date, float>(Date(stringToInt(day),
-		stringToInt(month), stringToInt(year)), stringToFloat(value)));
+    int day = convertStringToInt(dayStr);
+    int month = convertStringToInt(monthStr);
+    int year = convertStringToInt(yearStr);
+    float value = convertStringToFloat(valueStr);
+
+    BitcoinExchange::coins.insert(std::make_pair(Date(day, month, year), value));
 }
 
-std::vector<std::string> customSplit(const std::string& str, char delim)
+
+std::vector<std::string> splitString(const std::string& inputString, char delimiter)
 {
-	std::vector<std::string> tokens;
-	std::string token;
-	std::istringstream tokenStream(str);
-	while (std::getline(tokenStream, token, delim))
-		tokens.push_back(token);
-	return tokens;
+	std::vector<std::string> resultTokens;
+	std::string currentToken;
+	std::istringstream inputStream(inputString);
+	while (std::getline(inputStream, currentToken, delimiter))
+		resultTokens.push_back(currentToken);
+	return resultTokens;
 }
 
-void BitcoinExchange::readyToExchange(std::vector<std::string> date, std::string value)
+void BitcoinExchange::processExchange(std::vector<std::string> dateParts, std::string amount)
 {
-	std::string day = trim(date[2]);
-	std::string month = trim(date[1]);
-	std::string year = trim(date[0]);
-	Date searchDate(stringToInt(day), stringToInt(month), stringToInt(year));
-	// Find the exact or nearest lower date
-	std::map<Date, float>::iterator it = currencies.lower_bound(searchDate);
-	if (it != currencies.end() && it->first != searchDate && it == currencies.begin()) {
+	std::string dayStr = trim(dateParts[2]);
+    std::string monthStr = trim(dateParts[1]);
+    std::string yearStr = trim(dateParts[0]);
+
+	
+	Date searchDate(convertStringToInt(dayStr), convertStringToInt(monthStr), convertStringToInt(yearStr));
+	std::map<Date, float>::iterator iterator = coins.lower_bound(searchDate);
+	if (iterator != coins.end() && iterator->first != searchDate && iterator == coins.begin()) {
 		std::cout << "No data available for the provided date or earlier." << std::endl;
 		return ;
 	}
-	else if (it != currencies.begin() && it != currencies.end() && it->first != searchDate) {
-		--it; // Move iterator to nearest lower date
+	else if (iterator != coins.begin() && iterator != coins.end() && iterator->first != searchDate) {
+		--iterator;
 	}
-	// Calculate result
 	double result;
-	if (it != currencies.end())
+	if (iterator != coins.end())
 	{
-		result = it->second * stringToFloat(value);
-		std::cout <<year << "-" << month << "-" << day << " => " << value << " = " << result << std::endl;
+		result = iterator->second * convertStringToFloat(amount);
+		std::cout <<yearStr << "-" << monthStr << "-" << dayStr << " => " << amount << " = " << result << std::endl;
 	}
 	else {
 		std::cout << "No data available for the provided date or earlier." << std::endl;
 	}
 }
 
-void	BitcoinExchange::fillData(const char *input)
+void	BitcoinExchange::processDataFile(const char *filePath)
 {
-	if (!input)
+	if (!filePath)
 		throw std::invalid_argument("Error: invalid Argument");
-	std::ifstream infile(input);
-	std::string line;
+	std::ifstream infile(filePath);
+	std::string currentLine;
 
 	if (!infile.is_open())
 		throw std::invalid_argument("Error: could not open file.");
-	std::getline(infile, line);
-	for (;std::getline(infile, line);)
+	std::getline(infile, currentLine);
+	for (;std::getline(infile, currentLine);)
 	{
-		size_t pos = line.find(',');
+		size_t pos = currentLine.find(',');
 		if (pos == std::string::npos)
 			throw std::invalid_argument("Error: invalid format");
-		std::string date = line.substr(0, pos);
-		std::string value = line.substr(pos + 1, line.length());
-		std::vector <std::string> dateSplit = customSplit(date, '-'); // split(date, '-');
-		parseInsertData(trim(dateSplit[0]), trim(dateSplit[1]), trim(dateSplit[2]), trim(value));
+		std::string datePart = currentLine.substr(0, pos);
+		std::string valuePart = currentLine.substr(pos + 1, currentLine.length());
+		std::vector <std::string> dateComponents = splitString(datePart, '-');
+		insertBitcoinRecord(trim(dateComponents[0]), trim(dateComponents[1]), trim(dateComponents[2]), trim(valuePart));
 	}
 	infile.close();
 }
 
-void	BitcoinExchange::btcExchange(const char *input, const char *data)
+void	BitcoinExchange::processBitcoinExchange(const char* inputFilePath, const char* dataFilePath)
 {
-	if (!input || !data)
+	if (!inputFilePath || !dataFilePath)
 		throw std::invalid_argument("Error: invalid Argument");
-	fillData(data);
-	std::ifstream infile(input);
+	processDataFile(dataFilePath);
+	std::ifstream infile(inputFilePath);
 	std::string line;
 
 	if (!infile.is_open())
@@ -203,7 +209,7 @@ void	BitcoinExchange::btcExchange(const char *input, const char *data)
 	std::getline(infile, line);
 	if (line.empty())
 		throw std::invalid_argument("Error: Empty file");
-	if (!checkHeader(line))
+	if (!isHeader(line))
 		throw std::invalid_argument("Error: invalid header");
 	std::string header = "date | value";
 	if(!infile.eof())
@@ -228,12 +234,12 @@ void	BitcoinExchange::btcExchange(const char *input, const char *data)
 			std::cout << "Error: invalid line" << std::endl;
 			continue ;
 		}
-		if (!checkValue(value))
+		if (!check_value_is_valid(value))
 			continue ;
-		std::vector <std::string> dateSplit = customSplit(date, '-'); // split(date, '-');
-		if (!checkDate(trim(dateSplit[0]), trim(dateSplit[1]), trim(dateSplit[2])))
+		std::vector <std::string> dateSplit = splitString(date, '-'); // split(date, '-');
+		if (!isValidDate(trim(dateSplit[0]), trim(dateSplit[1]), trim(dateSplit[2])))
 			continue ;
-		readyToExchange(dateSplit, value);
+		processExchange(dateSplit, value);
 	}
 	infile.close();
 }

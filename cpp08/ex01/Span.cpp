@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 17:40:47 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/26 17:41:30 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/27 16:57:36 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ Span& Span::operator=(const Span& obj)
 {
 	if (this != &obj)
 	{
-		this->v = obj.v;
+		this->_vec = obj._vec;
 		this->N = obj.N;
 	}
 	return (*this);
@@ -39,44 +39,44 @@ Span::~Span()
 {
 }
 
-unsigned int Span::size() const
+unsigned int Span::getSize() const
 {
 	return (this->N);
 }
 
-void	Span::addNumber(int n)
+void	Span::addNumber(int num)
 {
-	if (this->v.size() == this->N)
+	if (this->_vec.size() == this->N)
 		throw std::exception();
-	this->v.push_back(n);
+	this->_vec.push_back(num);
 }
 
 unsigned int	Span::shortestSpan()
 {
 	std::vector<int> tmp;
 
-	if (this->v.size() < 2)
+	if (this->_vec.size() < 2)
 		throw std::exception();
-	std::sort(this->v.rbegin(), this->v.rend());
-	for (std::vector<int>::iterator it = this->v.begin(); it != this->v.end(); it++)
+	std::sort(this->_vec.rbegin(), this->_vec.rend());
+	for (std::vector<int>::iterator it = this->_vec.begin(); it != this->_vec.end(); it++)
 	{
-		if (it + 1 != this->v.end())
+		if (it + 1 != this->_vec.end())
 			tmp.push_back(*it - *(it + 1));
 	}
-	unsigned int	min = *std::min_element(tmp.begin(), tmp.end());
-	return (min);
+
+	return (*std::min_element(tmp.begin(), tmp.end()));
 }
 
 unsigned int	Span::longestSpan()
 {	
-	if (this->v.size() < 2)
+	if (this->_vec.size() < 2)
 		throw std::exception();
-	int min = *std::min_element(this->v.begin(), this->v.end());
-	int max = *std::max_element(this->v.begin(), this->v.end());
+	int min = *std::min_element(this->_vec.begin(), this->_vec.end());
+	int max = *std::max_element(this->_vec.begin(), this->_vec.end());
 	return (max - min);
 }
 
 std::vector<int> Span::getVector() const
 {
-	return (this->v);
+	return (this->_vec);
 }

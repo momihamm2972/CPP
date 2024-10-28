@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 17:49:23 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/26 17:51:00 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/27 11:51:16 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ class MutantStack : public std::stack<T, Container>
 {
 		public:
 			MutantStack();
-			MutantStack(MutantStack const &rhs);
-			MutantStack &operator=(MutantStack const &rhs);
+			MutantStack(MutantStack const &obj);
+			MutantStack &operator=(MutantStack const &obj);
 			~MutantStack();
 			typedef typename std::stack<T, Container>::container_type::iterator iterator;
 			iterator begin();

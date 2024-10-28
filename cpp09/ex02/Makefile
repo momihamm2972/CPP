@@ -5,12 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/10/25 18:35:35 by momihamm          #+#    #+#              #
-#    Updated: 2024/10/26 18:01:40 by momihamm         ###   ########.fr        #
+#    Created: 2024/10/27 21:14:09 by momihamm          #+#    #+#              #
+#    Updated: 2024/10/27 21:14:10 by momihamm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = pmergeme
+
+
+NAME = PmergeMe
 CC = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 FILES = $(wildcard *.cpp)
@@ -27,9 +29,9 @@ $(NAME) : $(OBJ)
 	$(CC) $(FILES) $(FLAGS) -o $(NAME)
 
 clean :
-		@rm -f $(OBJ)
+	@rm -f $(OBJ)
 
 fclean : clean
-		@rm -f $(NAME)
+	@rm -f $(NAME)
 
 re : fclean all

@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 17:57:39 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/26 17:59:50 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/27 20:17:01 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,72 +14,83 @@
 
 RPN::RPN()
 {
-	_expr.clear();
+	operatorSymbol.clear();
 }
 
 RPN::~RPN()
 {
 }
 
-RPN::RPN(const RPN& other)
+RPN::RPN(const RPN& obj)
 {
-	*this = other;
+	*this = obj;
 }
 
-RPN& RPN::operator=(const RPN& other)
+RPN& RPN::operator=(const RPN& obj)
 {
-	if (this != &other)
+	if (this != &obj)
 	{
-		_expr = other._expr;
-		_stack = other._stack;
+		operatorSymbol = obj.operatorSymbol;
+		_stack = obj._stack;
 	}
 	return *this;
 }
 
-static int charToInt(char c)
+static int convert_char_to_int(char c)
 {
 	return c - '0';
 }
 
-void RPN::rpn(std::string expr)
+void RPN::evaluate(std::string input)
 {
-	int res = 0;
-	for (size_t i = 0; i < expr.length(); i++)
+	int result = 0;
+	std::string str = "0123456789+-*/ ";
+	for (size_t i = 0; i < input.length(); i++)
 	{
-		if (expr.find_first_not_of("0123456789+-*/ ") != std::string::npos)
+		if (input.find_first_not_of(str) != std::string::npos)
 			return (std::cout << "Error" << std::endl, void());
-		if (expr[i] == ' ')
+		if (input[i] == ' ')
 			continue;
-		if (isdigit(expr[i]))
-			_stack.push(charToInt(expr[i]));
-		if (expr[i] == '+' || expr[i] == '-' || expr[i] == '*' || expr[i] == '/')
-			_expr = expr[i];
-		if (_stack.size() > 1 && !_expr.empty())
+		if (isdigit(input[i]))
+			_stack.push(convert_char_to_int(input[i]));
+		if (input[i] == '+' || input[i] == '-' || input[i] == '*' || input[i] == '/')
+			operatorSymbol = input[i];
+		if (_stack.size() > 1 && !operatorSymbol.empty())
 		{
-			int n1 = _stack.top();
+			int number_1 = _stack.top();
 			_stack.pop();
-			int n2 = _stack.top();
+			int number_2 = _stack.top();
 			_stack.pop();
-			if (_expr == "*")
-				res = n2 * n1;
-			else if (_expr == "+")
-				res = n2 + n1;
-			else if (_expr == "-")
-				res = n2 - n1;
-			else if (_expr == "/")
+			if (operatorSymbol == "*")
+				result = number_2 * number_1;
+			else if (operatorSymbol == "+")
+				result = number_2 + number_1;
+			else if (operatorSymbol == "-")
+				result = number_2 - number_1;
+			else if (operatorSymbol == "/")
 			{
-				if (n1 == 0)
-					return (std::cout << "cant devide by 0" << std::endl, void());
-				res = n2 / n1;
+				if (number_1 == 0)
+				{
+					std::cout << "Error: Cannot divide by zero." << std::endl;
+					return;
+				}
+				result = number_2 / number_1;
 			}
-			_stack.push(res);
-			_expr.clear();
+			_stack.push(result);
+			operatorSymbol.clear();
 		}
-		else if (_stack.size() == 1 && !_expr.empty())
-			return (std::cout << "Error" << std::endl, void());
+		else if (_stack.size() == 1 && !operatorSymbol.empty())
+		{
+			std::cout << "Error" << std::endl;
+			return ;
+		}
 	}
 	if (_stack.size() != 1)
-		return (std::cout << "Error" << std::endl, void());
-	res = _stack.top();
-	std::cout << res << std::endl;
+	{
+		std::cout << "Error" << std::endl;
+		return ;
+	}
+		
+	result = _stack.top();
+	std::cout << result << std::endl;
 }

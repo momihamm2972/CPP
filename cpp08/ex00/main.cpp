@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 17:38:08 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/26 17:39:20 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/27 16:54:31 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,24 @@
 
 int main()
 {
-	std::vector<int> v;
-	std::list<int> l;
+	std::vector<int> _vec;
+	std::list<int> _lis;
 
-	for (int i = 0; i < 10; i++)
+	for (int index = 0; index < 10; index++)
 	{
-		v.push_back(i);
+		_vec.push_back(index);
 	}
-	for (int i = 0; i < 10; i++)
+	for (int index = 0; index < 10; index++)
 	{
-		l.push_back(i);
+		_lis.push_back(index);
 	}
-	std::cout << *easyfinde(v, 5) << std::endl;
-	try{
-		std::cout << *easyfinde(v, 15) << std::endl;
-	}catch(std::exception &e){
+	try
+	{
+		std::cout <<"VECTOR : " <<  *easyfinde(_vec, 5) << std::endl;
+		std::cout <<"LIST : " <<  *easyfinde(_lis, 15) << std::endl;
+	}
+	catch(std::exception &e)
+	{
 		std::cout << e.what() << std::endl;
 	}
 	return 0;

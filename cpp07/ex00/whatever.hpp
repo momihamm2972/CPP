@@ -6,31 +6,30 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 17:19:13 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/26 17:20:06 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/27 00:34:07 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <iostream>
-
 template <typename T>
-void	swap(T& a, T& b)
+void	swap(T& value0, T& value1)
 {
-	T	tmp;
-	tmp = a;
-	a = b;
-	b = tmp;
+	T swp = value0;
+	value0 = value1;
+	value1 = swp;
 }
 
 template <typename T>
-T	min(T a, T b)
+T	min(T value0, T value1)
 {
-	return((a < b) ? a : b);
+	if (value0 < value1)
+		return (value0);
+	return(value1);
 }
 
 template <typename T>
-T	max(T a, T b)
+T	max(T value0, T value1)
 {
-	return((a > b) ? a : b);
+	return((value0 > value1) ? value0 : value1);
 }

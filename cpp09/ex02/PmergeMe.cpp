@@ -5,337 +5,176 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/26 18:01:45 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/26 18:02:52 by momihamm         ###   ########.fr       */
+/*   Created: 2024/10/27 21:14:16 by momihamm          #+#    #+#             */
+/*   Updated: 2024/10/27 21:14:17 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
+
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe()
+
+int convert_str_to_int(const std::string& str) 
 {
-	_struggler = 0;
-	_strugglerDeq = 0;
-	_foundStruggler = false;
-	_foundStrugglerDeq = false;
-	_timeTakenVec = 0;
-	_timeTakenDeque = 0;
+    std::stringstream ss(str);
+    int num;
+    ss >> num;
+    return num;
 }
 
-PmergeMe::~PmergeMe()
+void printList(const std::list<int>& items) 
 {
+    for (std::list<int>::const_iterator it = items.begin(); it != items.end(); ++it) {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
 }
 
-t_vector	PmergeMe::getMainChain() const
+void printVector(const std::vector<int>& items) 
 {
-	return _mainChain;
+    for (std::vector<int>::const_iterator it = items.begin(); it != items.end(); ++it) {
+        std::cout << *it << " ";
+    }
+    std::cout << std::endl;
 }
 
-t_deque		PmergeMe::getMainChainDeq() const
+double sort_vector(std::vector<int>& numbers) 
 {
-	return _mainChainDeq;
+    clock_t start, end;
+    start = clock();
+    std::vector<int> sorted = mergeSort(numbers);
+    end = clock();
+    numbers = sorted;
+    return (double)(end - start) / CLOCKS_PER_SEC * 1000000.0;
 }
 
-// Function to calculate the nth Jacobsthal number
-size_t PmergeMe::jacobsthal() {
-	static size_t j1 = 1, j2 = 0;
-	size_t res = j1 + 2 * j2;
-	j2 = j1;
-	j1 = res;
-	return res;
+double sort_list(std::list<int>& lst)
+{
+    clock_t start, end;
+    start = clock();
+    std::list<int> sorted = mergeSort(lst);
+    end = clock();
+    lst = sorted;
+    return (double)(end - start) / CLOCKS_PER_SEC * 1000000.0;
 }
 
-void PmergeMe::detecteLarge()
+
+void displayProcessingTime(double vectorDuration, double listDuration, int elementCount)
 {
-	for (size_t i = 0; i < _numbers.size(); i++)
-	{
-		if (_numbers[i].first >= 0 && _numbers[i].first < _numbers[i].second)
-		{
-			std::pair<int, int> tmp = _numbers[i];
-			_numbers[i] = std::make_pair(_numbers[i].second, tmp.first);
-		}
-	}
-}
-//function to sort the pair
-void PmergeMe::prepareSortPair()
-{
-	for (size_t i = 0; i < _numbers.size(); i++)
-	{
-		for (size_t j = 0; j < _numbers.size(); j++)
-		{
-			if (_numbers[i].first < _numbers[j].first)
-			{
-				std::pair<int, int> tmp = _numbers[i];
-				_numbers[i] = _numbers[j];
-				_numbers[j] = tmp;
-			}
-		}
-	}
+    std::cout << std::fixed << std::setprecision(2);
+    std::cout << "Time to process a range of " << elementCount << " elements with std::vector: "
+              << vectorDuration << " us" << std::endl;
+    std::cout << "Time to process a range of " << elementCount << " elements with std::list: "
+              << listDuration << " us" << std::endl;
 }
 
-//function to split the string
-static std::vector<std::string> split(const std::string& str, const char sep)
+std::vector<int> parseArgumentsToSequence(int argc, char* argv[])
 {
-	std::vector<std::string> result;
-	std::string token;
-	std::istringstream tokenStream(str);
-	while (std::getline(tokenStream, token, sep))
-	{
-		if (token.empty())
-			continue;
-		result.push_back(token);
-	}
-	return result;
+    if (argc < 2) {
+        throw std::invalid_argument("Error: No numbers provided");
+    }
+    
+    std::vector<int> parsedSequence;
+    try {
+        for (int i = 1; i < argc; i++) {
+            int number = convert_str_to_int(argv[i]);
+            if (number < 0)
+                throw std::invalid_argument("Negative numbers are not allowed");
+            parsedSequence.push_back(number);
+        }
+    } catch (const std::exception& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+        exit(1);
+    }
+    return parsedSequence;
 }
 
-void	PmergeMe::createMainChainAndPend()
-{
-	_mainChain.push_back(_numbers[0].second);
-	for (size_t i = 0; i < _numbers.size(); i++)
-	{
-		_mainChain.push_back(_numbers[i].first);
-		_pend.push_back(_numbers[i].second);
-	}
+std::vector<int>::iterator findPosition(std::vector<int>& vec, int value) {
+    return std::lower_bound(vec.begin(), vec.end(), value);
 }
 
-void	printNumbers(std::vector<std::pair<int, int> > numbers)
-{
-	std::cout << "------------------\n";
-	for (size_t i = 0; i < numbers.size(); i++)
-	{
-		std::cout << "-->|Pair: " << numbers[i].first << "|" << numbers[i].second << std::endl;
-	}
+std::list<int>::iterator findPosition(std::list<int>& lst, int value) {
+    std::list<int>::iterator it = lst.begin();
+    while (it != lst.end() && *it <= value) {
+        ++it;
+    }
+    return it;
 }
 
-static int stringToInt(const std::string& str)
-{
-	std::istringstream iss(str);
-	int result;
-	iss >> result;
-	return result;
+std::vector<int> mergeSort(const std::vector<int>& inputVector) {
+    if (inputVector.size() <= 1) {
+        return inputVector;
+    }
+
+    std::vector<int> result;
+    std::vector<std::pair<int, int> > pairs;
+    size_t i;
+    for (i = 0; i + 1 < inputVector.size(); i += 2) {
+        if (inputVector[i] < inputVector[i + 1]) {
+            pairs.push_back(std::make_pair(inputVector[i], inputVector[i + 1]));
+        } else {
+            pairs.push_back(std::make_pair(inputVector[i + 1], inputVector[i]));
+        }
+    }
+    int lastElement = -1;
+    if (i < inputVector.size()) {
+        lastElement = inputVector[i];
+    }
+    std::vector<int> largerElements;
+    for (size_t j = 0; j < pairs.size(); ++j) {
+        largerElements.push_back(pairs[j].second);
+    }
+
+    if (largerElements.size() > 1) {
+        largerElements = mergeSort(largerElements);
+    }
+    result = largerElements;
+    for (size_t j = 0; j < pairs.size(); ++j) {
+        std::vector<int>::iterator pos = std::lower_bound(result.begin(), result.end(), pairs[j].first);
+        result.insert(pos, pairs[j].first);
+    }
+    if (lastElement != -1) {
+        std::vector<int>::iterator pos = std::lower_bound(result.begin(), result.end(), lastElement);
+        result.insert(pos, lastElement);
+    }
+    return result;
 }
 
-void	PmergeMe::printNumberVec()
-{
-	for (size_t i = 0; i < _mainChain.size(); i++)
-		std::cout << _mainChain[i] << " ";
-	std::cout << std::endl;
-}
+std::list<int> mergeSort(const std::list<int>& inputList) {
+    if (inputList.size() <= 1) {
+        return inputList;
+    }
 
-void	PmergeMe::printNumberDeq()
-{
-	for (size_t i = 0; i < _mainChainDeq.size(); i++)
-		std::cout << _mainChainDeq[i] << " ";
-	std::cout << std::endl;
-}
+    std::list<int> result;
+    std::vector<std::pair<int, int> > pairs;
+    std::list<int>::const_iterator it = inputList.begin();
+    while (it != inputList.end()) {
+        int first = *it++;
+        if (it != inputList.end()) {
+            int second = *it++;
+            pairs.push_back(std::make_pair(
+                std::min(first, second),
+                std::max(first, second)
+            ));
+        } else {
+            pairs.push_back(std::make_pair(first, first));
+        }
+    }
+    std::list<int> largerElements;
+    for (size_t i = 0; i < pairs.size(); ++i) {
+        largerElements.push_back(pairs[i].second);
+    }
 
-void	PmergeMe::checkSign(char *av)
-{
-	int	detecSign = 0;
-	for (size_t i = 0; av[i]; i++)
-	{
-		if (av[i] == '+' && av[i + 1] == '\0')
-		{
-			std::cerr << "Error" << std::endl;
-			exit(1);
-		}
-		if (av[i] == '+')
-			detecSign++;
-		if (detecSign > 1)
-		{
-			std::cerr << "Error" << std::endl;
-			exit(1);
-		}
-	}
-}
-
-std::string	PmergeMe::takingNumbers(char **av)
-{
-	std::string str = "";
-	size_t pos = 0;
-	for (size_t i = 1; av[i]; i++)
-	{
-		str += av[i];
-		pos = str.find_first_not_of("0123456789 +");
-		if (pos != std::string::npos)
-		{
-			std::cerr << "Error" << std::endl;
-			exit(1);
-		}
-		checkSign(av[i]);
-		if (av[i + 1])
-			str += " ";
-	}
-	return str;
-}
-
-void	PmergeMe::mergeNumbers(size_t jac)
-{
-	for (;jac;)
-	{
-		if (_pend[jac] == -1)
-			break;
-		std::vector<int>::iterator it = std::lower_bound(_mainChain.begin(), _mainChain.end(), _pend[jac]);
-		_mainChain.insert(it, _pend[jac]);
-		_pend[jac] = -1;
-		if (jac > 0)
-			jac--;
-	}
-}
-
-void	PmergeMe::mergeStruggler()
-{
-	std::vector<int>::iterator it = std::lower_bound(_mainChain.begin(), _mainChain.end(), _struggler);
-	_mainChain.insert(it, _struggler);
-}
-
-void PmergeMe::sortNumbersVec(const std::string &str)
-{
-	std::vector<std::string> numbers = split(str, ' ');
-	clock_t start = 0, end = 0;
-	start = clock();
-	if (numbers.size() == 1)
-	{
-		_struggler = stringToInt(numbers[0]);
-		_foundStruggler = true;
-	}
-	else if (numbers.size() > 1)
-	{
-		size_t size;
-		for (size_t i = 0; i < numbers.size(); i+=2)
-		{
-			if (numbers[i].empty())
-				continue;
-			if (i + 1 >= numbers.size())
-			{
-				_struggler = stringToInt(numbers[i]);
-				_foundStruggler = true;
-				break;
-			}
-			_numbers.push_back(std::make_pair(stringToInt(numbers[i]), stringToInt(numbers[i + 1])));
-		}
-		detecteLarge();
-		std::sort(_numbers.begin(), _numbers.end());
-		createMainChainAndPend();
-		size = _pend.size();
-		size_t fixSize = size;
-		_pend[0] = -1;
-		for (;size;)
-		{
-			size_t jac = jacobsthal();
-			jac > 1 ? jac-- : jac;
-			if (jac == 1)
-				continue;
-			if (jac >= fixSize)
-				jac = fixSize - 1;
-			mergeNumbers(jac);
-			size--;
-		}
-	}
-	if (_foundStruggler)
-		mergeStruggler();
-	end = clock();
-	_timeTakenVec = static_cast<double>(end - start) / (double)CLOCKS_PER_SEC * 1e6;
-	printStatus(_numbers.size(), "std::vector", _timeTakenVec);
-}
-
-// sort deque numbers
-void PmergeMe::detecteLargeDeq()
-{
-	for (size_t i = 0; i < _numbersDeque.size(); i++)
-	{
-		if (_numbersDeque[i].first >= 0 && _numbersDeque[i].first < _numbersDeque[i].second)
-		{
-			std::pair<int, int> tmp = _numbersDeque[i];
-			_numbersDeque[i] = std::make_pair(_numbersDeque[i].second, tmp.first);
-		}
-	}
-}
-
-void	PmergeMe::createMainChainAndPendDeq()
-{
-	_mainChainDeq.push_back(_numbersDeque[0].second);
-	for (size_t i = 0; i < _numbersDeque.size(); i++)
-	{
-		_mainChainDeq.push_back(_numbersDeque[i].first);
-		_pendDeq.push_back(_numbersDeque[i].second);
-	}
-}
-
-void	PmergeMe::mergeNumbersDeq(size_t jac)
-{
-	for (;jac;)
-	{
-		if (_pendDeq[jac] == -1)
-			break;
-		std::deque<int>::iterator it = std::lower_bound(_mainChainDeq.begin(), _mainChainDeq.end(), _pendDeq[jac]);
-		_mainChainDeq.insert(it, _pendDeq[jac]);
-		_pendDeq[jac] = -1;
-		if (jac > 0)
-			jac--;
-	}
-}
-
-void	PmergeMe::mergeStrugglerDeq()
-{
-	std::deque<int>::iterator it = std::lower_bound(_mainChainDeq.begin(), _mainChainDeq.end(), _strugglerDeq);
-	_mainChainDeq.insert(it, _strugglerDeq);
-}
-
-void	PmergeMe::printStatus(size_t size, const std::string& container, double time) const
-{
-	std::cout << "Time to process a range of " << size <<
-		" elements with " << container << ": " << time << " us" << std::endl;
-}
-
-void PmergeMe::sortNumbersDeq(const std::string &str)
-{
-	std::vector<std::string> numbers = split(str, ' ');
-	clock_t start = 0, end = 0;
-	start = clock();
-	if (numbers.size() == 1)
-	{
-		_strugglerDeq = stringToInt(numbers[0]);
-		_foundStrugglerDeq = true;
-	}
-	else if (numbers.size() > 1)
-	{
-		size_t size;
-		for (size_t i = 0; i < numbers.size(); i+=2)
-		{
-			if (numbers[i].empty())
-				continue;
-			if (i + 1 >= numbers.size())
-			{
-				_strugglerDeq = stringToInt(numbers[i]);
-				_foundStrugglerDeq = true;
-				break;
-			}
-			_numbersDeque.push_back(std::make_pair(stringToInt(numbers[i]), stringToInt(numbers[i + 1])));
-		}
-		detecteLargeDeq();
-		std::sort(_numbersDeque.begin(), _numbersDeque.end());
-		createMainChainAndPendDeq();
-		size = _pendDeq.size();
-		size_t fixSize = size;
-		_pendDeq[0] = -1;
-		for (;size;)
-		{
-			size_t jac = jacobsthal();
-			jac > 1 ? jac-- : jac;
-			if (jac == 1)
-				continue;
-			if (jac >= fixSize)
-				jac = fixSize - 1;
-			mergeNumbersDeq(jac);
-			size--;
-		}
-	}
-	if (_foundStrugglerDeq)
-		mergeStrugglerDeq();
-	end = clock();
-	_timeTakenDeque = static_cast<double>(end - start) / CLOCKS_PER_SEC * 1e6;
-	std::cout <<"after: ";
-	printNumberDeq();
-	printStatus(_numbersDeque.size(), "std::deque", _timeTakenDeque);
+    if (largerElements.size() > 1) {
+        largerElements = mergeSort(largerElements);
+    }
+    result = largerElements;
+    for (size_t i = 0; i < pairs.size(); ++i) {
+        if (pairs[i].first != pairs[i].second ||  std::count(inputList.begin(), inputList.end(), pairs[i].first) >  std::count(result.begin(), result.end(), pairs[i].first)) {
+            std::list<int>::iterator pos = findPosition(result, pairs[i].first);
+            result.insert(pos, pairs[i].first);
+        }
+    }
+    return result;
 }

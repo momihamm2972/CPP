@@ -6,7 +6,7 @@
 /*   By: momihamm <momihamm@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 17:21:34 by momihamm          #+#    #+#             */
-/*   Updated: 2024/10/26 17:23:07 by momihamm         ###   ########.fr       */
+/*   Updated: 2024/10/27 01:36:18 by momihamm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,7 @@ int main()
 
 	iter(t, 2, printType<std::string>);
 	iter(arr, 5, printType<int>);
+	std::cout << "############################" << std::endl;
+	printType(arr[0]);
 }
+
